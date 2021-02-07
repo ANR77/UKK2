@@ -9,7 +9,7 @@ class Login extends CI_Controller {
 			$data = array(
 				'title' => 'Login'
 			);
-            templateVanilla('login/login',$data);
+            $this->load->view('login/login',$data);
         } else {
             redirect('dashboard');
         }
