@@ -21,7 +21,7 @@
                         </span>
                     </footer>
                 </main> <!-- END of MAIN - Navbar.php -->
-            </div> <!-- END THE BIG ROW - Header.php -->
+            </div> <!-- END THE BIG ROW - Sidebar.php -->
         </div><!-- END THE BIG CONTAINER - Header.php -->
         <script src="<?= base_url('assets/bootstrap/js/bootstrap.bundle.min.js') ?>" crossorigin="anonymous"></script>
         <script src="<?= base_url('assets/js/chart.js') ?>"></script>

@@ -15,29 +15,54 @@ class Login extends CI_Controller {
         }
 	}
 
+	// VALIDASI LOGIN
+	public function loginValidation(){
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('username', 'Username', 'required|max_length[25]');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+
+		$this->form_validation->set_message('required', '{field} tidak boleh kosong');
+		$this->form_validation->set_message('max_length', '{field} tidak boleh lebih dari {param} karakter.');
+		
+        if($this->form_validation->run()){
+            return true;
+        }
+        else{
+			return false;
+		}
+	}
+
+	// PROSES LOGIN
 	public function auth(){
-		$username = htmlspecialchars($this->input->post('username', TRUE), ENT_QUOTES);
-		$password = htmlspecialchars($this->input->post('password', TRUE), ENT_QUOTES);
+		if ($this->loginValidation()) {	
+			$post = $this->input->post();
+			$data = array(
+				'username' => $post['username'],
+				'password' => $post['password']
+			);
+			$this->load->model('M_Login');
 
-		$this->load->model('M_Login');
-
-		$user = $this->M_Login->authPetugas($username,$password);
-		if ($user) {
-			// $user['PASSWORD'] == md5($password)
-			$this->session->set_userdata('login', TRUE);
-			$this->session->set_userdata('nama', $user->nama_petugas);
-			$this->session->set_userdata('level', $user->level);
-			redirect('dashboard');
-			return;
+			$user = $this->M_Login->authPetugas($data['username'],$data['password']);
+			if ($user) {
+				// $user['PASSWORD'] == md5($password)
+				$this->session->set_userdata('login', TRUE);
+				$this->session->set_userdata('nama', $user->nama_petugas);
+				$this->session->set_userdata('level', $user->level);
+				redirect('dashboard');
+				return;
+			} else {
+				$this->session->set_userdata('error_login', TRUE);
+				redirect('/');
+			}
 		} else {
 			redirect('/');
 		}
 	}
 
+	// LOGOUT
 	public function logout(){
 		// $this->session_destroy;
-		$this->session->unset_userdata('login');
-        $this->session->unset_userdata('level');
+		$this->session->sess_destroy();
         redirect('/');
 	}
 }

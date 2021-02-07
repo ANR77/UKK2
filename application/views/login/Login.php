@@ -19,12 +19,23 @@
                         <form action="<?= base_url('login/auth') ?>" method="post">
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control rounded-0" id="username" name="username">
+                                <input type="text" class="form-control rounded-0 <?= (form_error('username')) ? 'is-invalid' : '' ?>" id="username" name="username" required maxlength="25"  value="<?= set_value('username'); ?>">
+                                <?php if (form_error('username')) : ?>
+                                    <div class="invalid-feedback">
+                                        <?= form_error('username') ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                             <div class="form-group">
                                 <label for="passsword">Password</label>
-                                <input type="password" class="form-control rounded-0" id="password" name="password">
+                                <input type="password" class="form-control rounded-0 <?= (form_error('password')) ? 'is-invalid' : '' ?>" id="password" name="password" required>
+                                <?php if (form_error('password')) : ?>
+                                    <div class="invalid-feedback">
+                                        <?= form_error('password') ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
+                            <?= ($this->session->error_login) ? '<p class="text-danger text-center"><i class="fas fa-exclamation-circle mr-2"></i>Username atau Password salah !</p>' : '' ; ?>
                             <button type="submit" class="btn btn-primary w-100 mt-5 rounded-0">Submit</button>
                         </form>
                     </div>
