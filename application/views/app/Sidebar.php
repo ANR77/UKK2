@@ -42,17 +42,17 @@
             <?php }?>
             <?php if ($this->session->level == 'admin') { ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($title == 'Data Petugas') ? "active" : " " ; ?>" href="components-blog-posts.html">
-                        <i class="fas fa-user-tie"></i>
-                        <span>Data Petugas</span>
+                    <a class="nav-link <?= ($title == 'Data Kelas') ? "active" : " " ; ?>" href="<?= base_url('kelas') ?>">
+                        <i class="fas fa-school"></i>
+                        <span>Data Kelas</span>
                     </a>
                 </li>
             <?php }?>
             <?php if ($this->session->level == 'admin') { ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($title == 'Data Kelas') ? "active" : " " ; ?>" href="components-blog-posts.html">
-                        <i class="fas fa-school"></i>
-                        <span>Data Kelas</span>
+                    <a class="nav-link <?= ($title == 'Data Petugas') ? "active" : " " ; ?>" href="components-blog-posts.html">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Data Petugas</span>
                     </a>
                 </li>
             <?php }?>
