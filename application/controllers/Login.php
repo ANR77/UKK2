@@ -38,7 +38,7 @@ class Login extends CI_Controller {
 			$post = $this->input->post();
 			$data = array(
 				'username' => $post['username'],
-				'password' => $post['password']
+				'password' => md5($post['password'])
 			);
 			$this->load->model('M_Login');
 

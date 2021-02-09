@@ -50,7 +50,7 @@
             <?php }?>
             <?php if ($this->session->level == 'admin') { ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($title == 'Data Petugas') ? "active" : " " ; ?>" href="components-blog-posts.html">
+                    <a class="nav-link <?= ($title == 'Data Petugas') ? "active" : " " ; ?>" href="<?= base_url('petugas') ?>">
                         <i class="fas fa-user-tie"></i>
                         <span>Data Petugas</span>
                     </a>

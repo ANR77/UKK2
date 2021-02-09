@@ -49,10 +49,10 @@ class Kelas extends CI_Controller {
 				'nama_kelas' => $post['nama'],
 			);
             if ($this->db->insert('kelas',$dataInput)) {
-                $this->session->set_flashdata('status', 'success');
+                $this->session->set_flashdata('msg', 'success');
                 redirect('kelas');
             } else {
-                $this->session->set_flashdata('status', 'success');
+                $this->session->set_flashdata('msg', 'fail');
                 redirect('kelas');
             }
         } else {
