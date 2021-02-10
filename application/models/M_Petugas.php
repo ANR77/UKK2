@@ -1,7 +1,7 @@
 <?php
 class M_Petugas extends CI_Model
 {
-    //ambil data kelas
+    //ambil data Petugas
     function getPetugas(){ 
         $this->db->select('*');
         $this->db->from('petugas');

@@ -34,7 +34,7 @@
             <?php }?>
             <?php if ($this->session->level == 'admin') { ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($title == 'Data Siswa') ? "active" : " " ; ?>" href="components-blog-posts.html">
+                    <a class="nav-link <?= ($title == 'Data Siswa') ? "active" : " " ; ?>" href="<?= base_url('siswa') ?>">
                         <i class="fas fa-user-graduate"></i>
                         <span>Data Siswa</span>
                     </a>
