@@ -59,6 +59,28 @@ class Login extends CI_Controller {
 		}
 	}
 
+	public function loginSiswa(){
+		$post = $this->input->post();
+		$data = array(
+			'nisn' => $post['nisn'],
+			'nis' => $post['nis']
+		);
+		$this->load->model('M_Login');
+
+		$user = $this->M_Login->authSiswa($data['nisn'],$data['nis']);
+		if ($user) {
+			// $user['PASSWORD'] == md5($password)
+			$this->session->set_userdata('login', TRUE);
+			$this->session->set_userdata('nama', $user->nama);
+			$this->session->set_userdata('level', 'siswa');
+			redirect('dashboard');
+			return;
+		} else {
+			$this->session->set_userdata('error_login', TRUE);
+			redirect('/');
+		}
+	}
+
 	// LOGOUT
 	public function logout(){
 		// $this->session_destroy;

@@ -36,6 +36,7 @@
                                 <?php endif; ?>
                             </div>
                             <?= ($this->session->error_login) ? '<p class="text-danger text-center"><i class="fas fa-exclamation-circle mr-2"></i>Username atau Password salah !</p>' : '' ; ?>
+                            <span class="login-siswa" data-toggle="modal" data-target="#modalLogin">Login Siswa</span>
                             <button type="submit" class="btn btn-primary w-100 mt-5 rounded-0">Submit</button>
                         </form>
                     </div>
@@ -47,5 +48,34 @@
         </div>
         <script src="<?= base_url('assets/js/jquery.js') ?>" crossorigin="anonymous"></script>
         <script src="<?= base_url('assets/bootstrap/js/bootstrap.bundle.min.js') ?>" crossorigin="anonymous"></script>
+        <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login Siswa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?= base_url('login/loginSiswa') ?>" method="post" class="form-row">
+                        <div class="form-group col-12">
+                            <label for="nisn">NISN</label>
+                            <input type="type" class="form-control" name="nisn" required>
+                        </div>
+                        <div class="form-group col-12">
+                            <label for="nis">NIS</label>
+                            <input type="type" class="form-control" name="nis" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
