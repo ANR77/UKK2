@@ -37,8 +37,8 @@
                         <td><?= $dataSiswa[$i]['nisn'] ?></td>
                         <td><?= $dataSiswa[$i]['nis'] ?></td>
                         <td><?= $dataSiswa[$i]['nama'] ?></td>
-                        <td><?= $dataSiswa[$i]['kelas'] ?></td>
-                        <td><?= $dataSiswa[$i]['alamat'] ?></td>
+                        <td class="kelas"><?= $dataSiswa[$i]['kelas'] ?></td>
+                        <td class="alamat"><?= $dataSiswa[$i]['alamat'] ?></td>
                         <td><?= $dataSiswa[$i]['no_telp'] ?></td>
                         <td>
                             <a class="btn btn-primary p-1" href="<?= base_url('Siswa/edit/'.$dataSiswa[$i]['nisn']) ?>"><i class="fas fa-edit"></i></a>
@@ -91,7 +91,6 @@
     <script>
         $(document).ready( function () {
             $('#tabel-kelas').DataTable();
-
             toastr.options = {
 				'closeButton': true,
 				'debug': false,

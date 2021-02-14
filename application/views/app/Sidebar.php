@@ -58,7 +58,7 @@
             <?php }?>
             <?php if ($this->session->level == 'admin') { ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($title == 'Data SPP') ? "active" : " " ; ?>" href="components-blog-posts.html">
+                    <a class="nav-link <?= ($title == 'Data SPP') ? "active" : " " ; ?>" href="<?= base_url('spp') ?>">
                         <i class="fas fa-file-invoice"></i>
                         <span>Data SPP</span>
                     </a>

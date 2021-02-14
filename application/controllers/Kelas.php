@@ -15,15 +15,21 @@ class Kelas extends CI_Controller {
         $this->load->model('M_Kelas');
         $dataKelas = array();
         $data = $this->M_Kelas->getKelas();
+        $dataSiswa = $this->M_Kelas->getKelasSiswa();
         foreach ($data as $key => $value) {
+            $jum = 0;
+            for ($i=0; $i < count($dataSiswa); $i++) { 
+                if ($dataSiswa[$i]['id_kelas']==$value->id_kelas) {
+                    $jum++;
+                }
+            }
             $temp = array(
                 'id_kelas' => $value->id_kelas,
-                'kelas' => $value->tingkat_kelas." ".$value->kompetensi_keahlian." ".$value->nama_kelas
+                'kelas' => $value->tingkat_kelas." ".$value->kompetensi_keahlian." ".$value->nama_kelas,
+                'jumlah_siswa' => $jum
             );
             array_push($dataKelas, $temp);
         }
-        // var_dump($dataKelas);
-        // die;
         return $dataKelas;
     }
 

@@ -3,11 +3,11 @@
     <div class="page-header row no-gutters py-4">
         <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
             <span class="text-uppercase page-subtitle">Admin</span>
-            <h3 class="page-title">Data Kelas</h3>
+            <h3 class="page-title">Data SPP</h3>
         </div>
         <div class="col-12 col-sm-8 d-flex justify-content-end">
             <div class="flex flex-row justify-content-end">
-                <a href="<?= base_url('kelas/create') ?>" class="btn btn-primary mr-0 mt-3 mt-sm-0"><i class="fas fa-plus mr-2"></i>Tambah Data</a>
+                <a href="<?= base_url('spp/create') ?>" class="btn btn-primary mr-0 mt-3 mt-sm-0"><i class="fas fa-plus mr-2"></i>Tambah Data</a>
             </div>
         </div>
     </div>
@@ -17,36 +17,49 @@
     <link rel="stylesheet" href="<?= base_url('assets/datatables/datatables.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
     <div class="card p-3 shadow-none">
-        <table id="tabel-kelas" class="table-hover">
+        <!-- <table id="tabel-spp" class="table-hover">
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>NISN</th>
+                    <th>NIS</th>
+                    <th>Nama</th>
                     <th>Kelas</th>
-                    <th>Jumlah Siswa</th>
+                    <th>Alamat</th>
+                    <th>No. Telepon</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <?php for ($i=0; $i < count($dataKelas); $i++) { ?>
+                <?php for ($i=0; $i < count($dataSiswa); $i++) { ?>
                     <tr>
                         <td><?= $i+1 ?></td>
-                        <td><?= $dataKelas[$i]['kelas'] ?></td>
-                        <td><?= $dataKelas[$i]['jumlah_siswa'] ?></td>
+                        <td><?= $dataSiswa[$i]['nisn'] ?></td>
+                        <td><?= $dataSiswa[$i]['nis'] ?></td>
+                        <td><?= $dataSiswa[$i]['nama'] ?></td>
+                        <td><?= $dataSiswa[$i]['kelas'] ?></td>
+                        <td><?= $dataSiswa[$i]['alamat'] ?></td>
+                        <td><?= $dataSiswa[$i]['no_telp'] ?></td>
                         <td>
-                            <a class="btn btn-primary p-1" href="<?= base_url('kelas/edit/'.$dataKelas[$i]['id_kelas']) ?>"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger p-1" data-id="<?= $dataKelas[$i]['id_kelas'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i></a>
+                            <a class="btn btn-primary p-1" href="<?= base_url('Siswa/edit/'.$dataSiswa[$i]['nisn']) ?>"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-danger p-1" data-id="<?= $dataSiswa[$i]['nisn'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 <?php } ?>
             </tbody>
-            <!-- <tfoot>
+            <tfoot>
                 <tr>
                     <th>No</th>
-                    <th>Kelas</th>
+                    <th>NISN</th>
+                    <th>NIS</th>
+                    <th>Nama</th>
+                    <th>Siswa</th>
+                    <th>Alamat</th>
+                    <th>No. Telepon</th>
                     <th>Aksi</th>
                 </tr>
-            </tfoot> -->
-        </table>
+            </tfoot>
+        </table> -->
     </div>
 
     
@@ -77,7 +90,7 @@
     </div>
     <script>
         $(document).ready( function () {
-            $('#tabel-kelas').DataTable();
+            $('#tabel-spp').DataTable();
 
             toastr.options = {
 				'closeButton': true,
@@ -99,7 +112,7 @@
 
         $('#modalDelete').on('shown.bs.modal', function (event) {
             let id = $(event.relatedTarget).data('id');
-            let path = "<?= base_url("kelas/delete/") ?>"+id;
+            let path = "<?= base_url("siswa/delete/") ?>"+id;
             $('#btn-modal-delete').attr('href', path);
         });
 

@@ -29,4 +29,12 @@ class M_Kelas extends CI_Model
         $this->db->where('id_kelas',$id);
         return $this->db->get()->row();
     }
+    
+    //ambil data Siswa
+    function getKelasSiswa(){ 
+        $this->db->select('id_kelas');
+        $this->db->from('siswa');
+        return $this->db->get()->result_array();
+    }
+
 }
