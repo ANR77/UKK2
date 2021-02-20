@@ -14,56 +14,52 @@
     <!-- End Page Header -->
 
     <!-- CONTENT GOES HERE -->
-    <link rel="stylesheet" href="<?= base_url('assets/datatables/datatables.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
     <div class="card p-3 shadow-none">
-        <!-- <table id="tabel-spp" class="table-hover">
+        <table id="tabel-spp" class="table-hover">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>NISN</th>
-                    <th>NIS</th>
-                    <th>Nama</th>
-                    <th>Kelas</th>
-                    <th>Alamat</th>
-                    <th>No. Telepon</th>
-                    <th>Aksi</th>
+                    <th>Kode SPP</th>
+                    <th>Keterangan</th>
+                    <th>Tahun</th>
+                    <th>Nominal</th>
+                    <!-- <th>Aksi</th> -->
                 </tr>
             </thead>
             <tbody>
-                <?php for ($i=0; $i < count($dataSiswa); $i++) { ?>
+                <?php for ($i=0; $i < count($dataSpp); $i++) { ?>
                     <tr>
                         <td><?= $i+1 ?></td>
-                        <td><?= $dataSiswa[$i]['nisn'] ?></td>
-                        <td><?= $dataSiswa[$i]['nis'] ?></td>
-                        <td><?= $dataSiswa[$i]['nama'] ?></td>
-                        <td><?= $dataSiswa[$i]['kelas'] ?></td>
-                        <td><?= $dataSiswa[$i]['alamat'] ?></td>
-                        <td><?= $dataSiswa[$i]['no_telp'] ?></td>
-                        <td>
-                            <a class="btn btn-primary p-1" href="<?= base_url('Siswa/edit/'.$dataSiswa[$i]['nisn']) ?>"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger p-1" data-id="<?= $dataSiswa[$i]['nisn'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i></a>
-                        </td>
+                        <td><?= $dataSpp[$i]['kode_spp'] ?></td>
+                        <td><?= $dataSpp[$i]['keterangan'] ?></td>
+                        <td><?= $dataSpp[$i]['tahun'] ?></td>
+                        <td><?= $dataSpp[$i]['nominal'] ?></td>
+                        <!-- <td>
+                            <a class="btn btn-primary p-1" href="<?= base_url('spp/edit/'.$dataSpp[$i]['nisn']) ?>"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-danger p-1" data-id="<?= $dataSpp[$i]['nisn'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i></a>
+                        </td> -->
                     </tr>
                 <?php } ?>
             </tbody>
             <tfoot>
                 <tr>
-                    <th>No</th>
+                    <!-- <th>No</th>
                     <th>NISN</th>
                     <th>NIS</th>
                     <th>Nama</th>
                     <th>Siswa</th>
                     <th>Alamat</th>
-                    <th>No. Telepon</th>
-                    <th>Aksi</th>
+                    <th>No. Telepon</th> -->
+                    <!-- <th>Aksi</th> -->
                 </tr>
             </tfoot>
-        </table> -->
+        </table>
     </div>
 
     
-    <script src="<?= base_url('assets/datatables/datatables.min.js') ?>"></script>
+    <script src="<?= base_url('assets/dataTables/datatables.min.js') ?>"></script>
     <script src="<?= base_url('assets/toastr/build/toastr.min.js') ?>"></script>
     <!-- Modal -->
     <div class="modal fade" id="modalDelete" tabindex="-1" aria-hidden="true">
@@ -91,24 +87,7 @@
     <script>
         $(document).ready( function () {
             $('#tabel-spp').DataTable();
-
-            toastr.options = {
-				'closeButton': true,
-				'debug': false,
-				'newestOnTop': false,
-				'progressBar': true,
-				'positionClass': 'toast-top-right',
-				'preventDuplicates': false,
-				'showDuration': '1000',
-				'hideDuration': '1000',
-				'timeOut': '5000',
-				'extendedTimeOut': '1000',
-				'showEasing': 'swing',
-				'hideEasing': 'linear',
-				'showMethod': 'fadeIn',
-				'hideMethod': 'fadeOut',
-			}
-        } );
+        });
 
         $('#modalDelete').on('shown.bs.modal', function (event) {
             let id = $(event.relatedTarget).data('id');

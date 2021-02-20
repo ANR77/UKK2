@@ -14,7 +14,7 @@
     <!-- End Page Header -->
 
     <!-- CONTENT GOES HERE -->
-    <link rel="stylesheet" href="<?= base_url('assets/datatables/datatables.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
     <div class="card p-3 shadow-none">
         <table id="tabel-kelas" class="table-hover">
@@ -50,7 +50,7 @@
     </div>
 
     
-    <script src="<?= base_url('assets/datatables/datatables.min.js') ?>"></script>
+    <script src="<?= base_url('assets/dataTables/datatables.min.js') ?>"></script>
     <script src="<?= base_url('assets/toastr/build/toastr.min.js') ?>"></script>
     <!-- Modal -->
     <div class="modal fade" id="modalDelete" tabindex="-1" aria-hidden="true">

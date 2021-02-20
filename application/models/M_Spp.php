@@ -1,6 +1,12 @@
 <?php
 class M_Spp extends CI_Model
 {
+    function getDataTabel(){
+        $this->db->select('*');
+        $this->db->from('spp');
+        return $this->db->get()->result_array();
+    }
+
     //ambil data Siswa
     function getKelasSiswa(){ 
         $this->db->select('id_kelas');

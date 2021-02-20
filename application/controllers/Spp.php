@@ -61,15 +61,17 @@ class Spp extends CI_Controller {
     // CREATE DATA SPP
     public function createData(){
         $post = $this->input->post();
+        $nominal = explode(",",$post['nominal']);
+        $nominal = implode("",$nominal);
         $dataInputSpp = array(
             'kode_spp' => $post['kode_spp'],
             'keterangan' => $post['keterangan_spp'],
             'tahun' => $post['tahun'],
-            'nominal' => $post['nominal'],
+            'nominal' => $nominal,
             'daftar_kelas' => implode(",", $post['to']),
             'data_created' => $post['data_created']
         );
-        $dataSiswaSpp = $this->generateQuerySppSiswa($post['kode_spp'],$post['to'],$post['nominal']);
+        $dataSiswaSpp = $this->generateQuerySppSiswa($post['kode_spp'],$post['to'],$nominal);
         // INSERTING DATA
         if ($this->db->insert('spp',$dataInputSpp)) {
             if ($this->db->insert_batch('siswa_spp', $dataSiswaSpp, $batch_size=100)) {
@@ -104,8 +106,10 @@ class Spp extends CI_Controller {
     }
 
 	public function index(){
+        $this->load->model('M_Spp');
         $data = array(
-            'title' => 'Data SPP'
+            'title' => 'Data SPP',
+            'dataSpp' => $this->M_Spp->getDataTabel()
         );
         template('spp/data',$data);
 	}

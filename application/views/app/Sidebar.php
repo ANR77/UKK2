@@ -18,7 +18,7 @@
             <!-- ADMIN -->
             <?php if ($this->session->level == 'admin') { ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($title == 'Dashboard') ? "active" : " " ; ?>" href="components-blog-posts.html">
+                    <a class="nav-link <?= ($title == 'Dashboard') ? "active" : " " ; ?>" href="<?= base_url('/') ?>">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
