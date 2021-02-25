@@ -50,10 +50,10 @@ class Spp extends CI_Controller {
 
     // LOAD CREATE DATA SPP
     public function create(){
+        $this->load->model('M_Spp');
         $data = array(
             'title' => 'Data SPP',
-            'dataKelas' => $this->getDataKelas(),
-            'kodeSpp' => $this->getKodeSpp()
+            'dataTingkat' => $this->M_Spp->getTingkat()
         );
         template('spp/create',$data);
     }
@@ -61,19 +61,13 @@ class Spp extends CI_Controller {
     // CREATE DATA SPP
     public function createData(){
         $post = $this->input->post();
-        $nominal = explode(",",$post['nominal']);
-        $nominal = implode("",$nominal);
-        $dataInputSpp = array(
-            'kode_spp' => $post['kode_spp'],
-            'keterangan' => $post['keterangan_spp'],
-            'tahun' => $post['tahun'],
-            'nominal' => $nominal,
-            'daftar_kelas' => implode(",", $post['to']),
-            'data_created' => $post['data_created']
-        );
-        $dataSiswaSpp = $this->generateQuerySppSiswa($post['kode_spp'],$post['to'],$nominal);
+        $this->load->model('M_Spp');
+        $kode_entri = $this->M_Spp->getKodeEntri();
+        $kode_entri = ($kode_entri['kode_entri'] == null) ? 0 : intval($kode_entri['kode_entri']) ;
+        $dataSpp = $this->generateQuerySpp($post, $kode_entri);
         // INSERTING DATA
-        if ($this->db->insert('spp',$dataInputSpp)) {
+        if ($this->db->insert_batch('spp',$dataSpp)) {
+            $dataSiswaSpp = $this->generateQuerySppSiswa($post['tingkat'],$kode_entri,$this->parsingAngsuran($post['jumlah_angsuran']));
             if ($this->db->insert_batch('siswa_spp', $dataSiswaSpp, $batch_size=100)) {
                 $this->session->set_flashdata('msg', 'success');
                 redirect('spp');
@@ -88,21 +82,52 @@ class Spp extends CI_Controller {
         }
     }
 
-    // GENERATE QUERY FOR INSERT siswa_spp
-    public function generateQuerySppSiswa($kode_kelas,$kelas,$nominal){
+    // GENERATE QUERY FOR INSERT spp
+    public function generateQuerySpp($post, $kode_entri){
         $data = array();
+        for ($i=0; $i < count($post['tingkat']); $i++) { 
+            $data [] = array(
+                'tingkat' => $post['tingkat'][$i],
+                'keterangan' => $post['keterangan_spp'],
+                'tahun' => $post['tahun'],
+                'jumlah_angsuran' => $this->parsingAngsuran($post['jumlah_angsuran']),
+                'nominal_angsuran' => $this->parsingAngsuran($post['nominal_angsuran']),
+                'data_created' => $post['data_created'],
+                'nama_petugas' => $this->session->nama,
+                'kode_entri' => $kode_entri+1
+            );
+        }
+        return $data;
+    }
+    
+    // GENERATE QUERY FOR INSERT siswa_spp
+    public function generateQuerySppSiswa($tingkat,$kode_entri,$jumlah_angsuran){
         $this->load->model('M_Spp');
-        for ($i=0; $i < count($kelas); $i++) {
-            $siswa = $this->M_Spp->getNisnSiswa($kelas[$i]);
-            for ($j=0; $j < count($siswa); $j++) { 
-                $data [] = array(
-                    'nisn' => $siswa[$j]['nisn'],
-                    'kode_spp' => $kode_kelas,
-                    'nominal' => $nominal
-                );
+        $kode_entri = ($kode_entri == 0) ? 1 : $kode_entri+1;
+        $data = array();
+        for ($i=0; $i < count($tingkat); $i++) { 
+            $id_spp = $this->M_Spp->getIdSppByEntri($tingkat[$i],$kode_entri);
+            $kelas = $this->M_Spp->getKelasByTingkat($tingkat[$i]);
+            for ($j=0; $j < count($kelas); $j++) { 
+                $siswa = $this->M_Spp->getIdSiswa($kelas[$j]['id_kelas']);
+                for ($k=0; $k < count($siswa); $k++) { 
+                    $data [] = array(
+                        'id_siswa' => $siswa[$k]['id_siswa'],
+                        'id_spp' => intval($id_spp['id_spp']),
+                        'jumlah_angsuran' => $jumlah_angsuran,
+                        'angsuran' => 0
+                    );
+                }
             }
         }
         return $data;
+    }
+
+    // PARSE UANG ANGSURAN
+    function parsingAngsuran($nominal){
+        $final = explode(",",$nominal);
+        $final = implode("",$final);
+        return $final;
     }
 
 	public function index(){

@@ -17,14 +17,15 @@
     <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
     <div class="card p-3 shadow-none">
-        <table id="tabel-spp" class="table-hover">
+        <table id="tabel-spp" class="table-hover table-striped">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Kode SPP</th>
                     <th>Keterangan</th>
                     <th>Tahun</th>
-                    <th>Nominal</th>
+                    <th>Tingkat</th>
+                    <th>Jumlah Angsuran</th>
+                    <th>Nominal Angsuran</th>
                     <!-- <th>Aksi</th> -->
                 </tr>
             </thead>
@@ -32,10 +33,11 @@
                 <?php for ($i=0; $i < count($dataSpp); $i++) { ?>
                     <tr>
                         <td><?= $i+1 ?></td>
-                        <td><?= $dataSpp[$i]['kode_spp'] ?></td>
                         <td><?= $dataSpp[$i]['keterangan'] ?></td>
                         <td><?= $dataSpp[$i]['tahun'] ?></td>
-                        <td><?= $dataSpp[$i]['nominal'] ?></td>
+                        <td><?= $dataSpp[$i]['tingkat'] ?></td>
+                        <td class="nominal"><?= $dataSpp[$i]['jumlah_angsuran'] ?></td>
+                        <td class="nominal"><?= $dataSpp[$i]['nominal_angsuran'] ?></td>
                         <!-- <td>
                             <a class="btn btn-primary p-1" href="<?= base_url('spp/edit/'.$dataSpp[$i]['nisn']) ?>"><i class="fas fa-edit"></i></a>
                             <a class="btn btn-danger p-1" data-id="<?= $dataSpp[$i]['nisn'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i></a>
@@ -87,6 +89,10 @@
     <script>
         $(document).ready( function () {
             $('#tabel-spp').DataTable();
+            $('.nominal').each(function() {
+                let temp = "Rp. "+$(this).text().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                $(this).html(temp);
+            })
         });
 
         $('#modalDelete').on('shown.bs.modal', function (event) {

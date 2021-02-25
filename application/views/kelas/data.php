@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
     <div class="card p-3 shadow-none">
-        <table id="tabel-kelas" class="table-hover">
+        <table id="tabel-kelas" class=" table-hover table-striped">
             <thead>
                 <tr>
                     <th>No</th>
@@ -39,13 +39,6 @@
                     </tr>
                 <?php } ?>
             </tbody>
-            <!-- <tfoot>
-                <tr>
-                    <th>No</th>
-                    <th>Kelas</th>
-                    <th>Aksi</th>
-                </tr>
-            </tfoot> -->
         </table>
     </div>
 
@@ -77,8 +70,12 @@
     </div>
     <script>
         $(document).ready( function () {
-            $('#tabel-kelas').DataTable();
-
+            $('#tabel-kelas').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            } );
             toastr.options = {
 				'closeButton': true,
 				'debug': false,

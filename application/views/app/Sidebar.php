@@ -26,7 +26,7 @@
             <?php }?>
             <?php if ($this->session->level == 'admin') { ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($title == 'Transaksi') ? "active" : " " ; ?>" href="components-blog-posts.html">
+                    <a class="nav-link <?= ($title == 'Transaksi') ? "active" : " " ; ?>" href="<?= base_url('transaksi') ?>">
                         <i class="fas fa-cash-register"></i>
                         <span>Transaksi</span>
                     </a>
@@ -66,9 +66,9 @@
             <?php }?>
             <?php if ($this->session->level == 'admin') { ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($title == 'History') ? "active" : " " ; ?>" href="components-blog-posts.html">
+                    <a class="nav-link <?= ($title == 'Riwayat Pembayaran') ? "active" : " " ; ?>" href="<?= base_url('riwayat') ?>">
                         <i class="fas fa-history"></i>
-                        <span>History</span>
+                        <span>Riwayat Pembayaran</span>
                     </a>
                 </li>
             <?php }?>
