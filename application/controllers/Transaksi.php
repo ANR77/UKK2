@@ -10,16 +10,22 @@ class Transaksi extends CI_Controller {
         }
     }
 
+    // AJAX REQUEST RETURN DATA SPP
     public function getDataSpp($id_siswa){
         $this->load->model('M_Transaksi');
 		echo json_encode($this->M_Transaksi->getSppByIdSiswa($id_siswa));
     }
 
+    // AJAX REQUEST RETURN DATA SISWA
+    public function getDataSiswa($condition){
+        $this->load->model('M_Transaksi');
+		echo json_encode($this->M_Transaksi->getSiswaByCondition($condition));
+    }
+
 	public function index(){
         $this->load->model('M_Transaksi');
         $data = array(
-            'title' => 'Transaksi',
-            'dataSiswa' => $this->M_Transaksi->getSiswa()
+            'title' => 'Transaksi'
         );
         template('transaksi/index',$data);
 	}

@@ -76,22 +76,6 @@
                     'copy', 'csv', 'excel', 'pdf', 'print'
                 ]
             } );
-            toastr.options = {
-				'closeButton': true,
-				'debug': false,
-				'newestOnTop': false,
-				'progressBar': true,
-				'positionClass': 'toast-top-right',
-				'preventDuplicates': false,
-				'showDuration': '1000',
-				'hideDuration': '1000',
-				'timeOut': '5000',
-				'extendedTimeOut': '1000',
-				'showEasing': 'swing',
-				'hideEasing': 'linear',
-				'showMethod': 'fadeIn',
-				'hideMethod': 'fadeOut',
-			}
         } );
 
         $('#modalDelete').on('shown.bs.modal', function (event) {
@@ -101,12 +85,11 @@
         });
 
         <?php 
-            if ($this->session->flashdata('msg') == 'success') {
-                echo 'toastr.success("Perintah Berhasil Dilakukan")';
-            } elseif ($this->session->flashdata('msg') == 'fail') {
-                echo 'toastr.warning("Peintah Gagal Dilakukan")';
+            if ($this->session->flashdata('status') == 'success') {
+                echo 'toastr.success("'.$this->session->flashdata('pesan').'")';
+            } elseif ($this->session->flashdata('status') == 'fail') {
+                echo 'toastr.error("'.$this->session->flashdata('pesan').'")';
             }
         ?>
     </script>
-    
 </div>

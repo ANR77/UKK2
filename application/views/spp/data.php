@@ -102,10 +102,10 @@
         });
 
         <?php 
-            if ($this->session->flashdata('msg') == 'success') {
-                echo 'toastr.success("Perintah Berhasil Dilakukan")';
-            } elseif ($this->session->flashdata('msg') == 'fail') {
-                echo 'toastr.warning("Peintah Gagal Dilakukan")';
+            if ($this->session->flashdata('status') == 'success') {
+                echo 'toastr.success("'.$this->session->flashdata('pesan').'")';
+            } elseif ($this->session->flashdata('status') == 'fail') {
+                echo 'toastr.error("'.$this->session->flashdata('pesan').'")';
             }
         ?>
     </script>

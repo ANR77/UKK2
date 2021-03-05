@@ -10,11 +10,22 @@ class M_Transaksi extends CI_Model
         INNER JOIN kejuruan ON kelas.id_kejuruan=kejuruan.id_kejuruan')->result_array();
     }
 
+    // ambil data spp
     function getSppByIdSiswa($id){
-        return $this->db->query('SELECT siswa_spp.id, siswa_spp.kode_spp, siswa_spp.nominal, spp.keterangan
+        return $this->db->query('SELECT siswa_spp.id, siswa_spp.jumlah_angsuran, siswa_spp.angsuran, spp.tingkat, spp.keterangan, spp.tahun, spp.nominal_angsuran
         FROM siswa_spp
-        INNER JOIN spp ON siswa_spp.kode_spp=spp.kode_spp
+        INNER JOIN spp ON siswa_spp.id_spp=spp.id_spp
         WHERE siswa_spp.id_siswa ='.$id)->result_array();
+    }
+
+    // ambil data siswa
+    function getSiswaByCondition($condition){
+        return $this->db->query('SELECT siswa.id_siswa,siswa.nisn, siswa.nama, CONCAT(tingkat.tingkat_kelas," ",kejuruan.kompetensi_keahlian," ",kelas.nama_kelas) AS kelas_full
+        FROM siswa
+        INNER JOIN kelas ON siswa.id_kelas=kelas.id_kelas
+        INNER JOIN tingkat ON kelas.tingkat_kelas=tingkat.tingkat_kelas
+        INNER JOIN kejuruan ON kelas.id_kejuruan=kejuruan.id_kejuruan
+        WHERE siswa.nisn LIKE "%'.$condition.'%" OR siswa.nama LIKE "%'.$condition.'%"')->result_array();
     }
 
     //ambil data where id

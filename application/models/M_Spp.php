@@ -60,4 +60,13 @@ class M_Spp extends CI_Model
         $this->db->where('id_kelas',$id_kelas);
         return $this->db->get()->result_array();
     }
+
+    // cek Spp tingkat dan tahun
+    function cekSpp($tingkat, $tahun){
+        $this->db->select('*')
+        ->from('spp')
+        ->where('tingkat',$tingkat)
+        ->where('tahun',$tahun);
+        return $this->db->get()->row();
+    }
 }

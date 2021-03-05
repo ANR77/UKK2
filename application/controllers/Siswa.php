@@ -63,10 +63,12 @@ class Siswa extends CI_Controller {
 				'no_telp' => $post['no_telp'],
 			);
             if ($this->db->insert('siswa',$dataInput)) {
-                $this->session->set_flashdata('msg', 'success');
+                $this->session->set_flashdata('status','success');
+                $this->session->set_flashdata('pesan','Input data berhasil!');
                 redirect('siswa');
             } else {
-                $this->session->set_flashdata('msg', 'fail');
+                $this->session->set_flashdata('status','fail');
+                $this->session->set_flashdata('pesan','Input data gagal!');
                 redirect('siswa');
             }
         } else {
@@ -99,10 +101,12 @@ class Siswa extends CI_Controller {
 			);
             $this->db->where('nisn',$nisn);
             if ($this->db->update('siswa',$dataInput)) {
-                $this->session->set_flashdata('msg', 'success');
+                $this->session->set_flashdata('status','success');
+                $this->session->set_flashdata('pesan','Pengeditan data berhasil!');
                 redirect('siswa');
             } else {
-                $this->session->set_flashdata('msg', 'fail');
+                $this->session->set_flashdata('status','fail');
+                $this->session->set_flashdata('pesan','Pengeditan data gagal!');
                 redirect('siswa');
             }
         } else {
@@ -114,10 +118,12 @@ class Siswa extends CI_Controller {
     public function delete($nisn){
         $this->db->where('nisn', $nisn);
         if ($this->db->delete('siswa')) {
-            $this->session->set_flashdata('msg', 'success');
+            $this->session->set_flashdata('status','success');
+            $this->session->set_flashdata('pesan','Data berhasil dihapus!');
             redirect('siswa');
         } else {
-            $this->session->set_flashdata('msg', 'fail');
+            $this->session->set_flashdata('status','fail');
+            $this->session->set_flashdata('pesan','Data gagal dihapus!');
             redirect('siswa');
         }
     }

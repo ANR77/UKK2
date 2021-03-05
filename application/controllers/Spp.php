@@ -65,19 +65,36 @@ class Spp extends CI_Controller {
         $kode_entri = $this->M_Spp->getKodeEntri();
         $kode_entri = ($kode_entri['kode_entri'] == null) ? 0 : intval($kode_entri['kode_entri']) ;
         $dataSpp = $this->generateQuerySpp($post, $kode_entri);
+        // CEK DUPLICATE ROW SPP
+        $duplicate = array();
+        for ($i=0; $i < count($post['tingkat']); $i++) { 
+            if ($this->M_Spp->cekSpp($post['tingkat'][$i],$post['tahun'])) {
+                array_push($duplicate,$post['tingkat'][$i]);
+            }
+        }
         // INSERTING DATA
-        if ($this->db->insert_batch('spp',$dataSpp)) {
-            $dataSiswaSpp = $this->generateQuerySppSiswa($post['tingkat'],$kode_entri,$this->parsingAngsuran($post['jumlah_angsuran']));
-            if ($this->db->insert_batch('siswa_spp', $dataSiswaSpp, $batch_size=100)) {
-                $this->session->set_flashdata('msg', 'success');
-                redirect('spp');
+        if (count($duplicate) == 0) {// here
+            if ($this->db->insert_batch('spp',$dataSpp)) {
+                $dataSiswaSpp = $this->generateQuerySppSiswa($post['tingkat'],$kode_entri,$this->parsingAngsuran($post['jumlah_angsuran']));
+                if ($this->db->insert_batch('siswa_spp', $dataSiswaSpp, $batch_size=100)) {
+                    $this->session->set_flashdata('status','success');
+                    $this->session->set_flashdata('pesan','Input data berhasil!');
+                    redirect('spp');
+                } else {
+                    $this->db->delete('spp',array('kode_entri' => $kode_entri+1));
+                    $this->session->set_flashdata('status','fail');
+                    $this->session->set_flashdata('pesan','Input data gagal!');
+                    redirect('spp');
+                }
             } else {
-                $this->db->delete('spp',array('kode_spp' => $post['kode_spp']));
-                $this->session->set_flashdata('msg', 'fail');
+                $this->session->set_flashdata('status','fail');
+                $this->session->set_flashdata('pesan','Input data gagal!');
                 redirect('spp');
             }
         } else {
-            $this->session->set_flashdata('msg', 'fail');
+            $txt=join(",",$duplicate);
+            $this->session->set_flashdata('status','fail');
+            $this->session->set_flashdata('pesan','SPP pada tingkat '.$txt.' pada tahun '.$post['tahun'].' sudah ada!');
             redirect('spp');
         }
     }

@@ -36,10 +36,12 @@ class Petugas extends CI_Controller {
 				'level' => $post['level'],
 			);
             if ($this->db->insert('petugas',$dataInput)) {
-                $this->session->set_flashdata('msg', 'success');
+                $this->session->set_flashdata('status','success');
+                $this->session->set_flashdata('pesan','Input data berhasil!');
                 redirect('petugas');
             } else {
-                $this->session->set_flashdata('msg', 'fail');
+                $this->session->set_flashdata('status','fail');
+                $this->session->set_flashdata('pesan','Penginputan data gagal!');
                 redirect('petugas');
             }
         } else {
@@ -69,10 +71,12 @@ class Petugas extends CI_Controller {
 			);
             $this->db->where('id_petugas',$id);
             if ($this->db->update('petugas',$dataInput)) {
-                $this->session->set_flashdata('msg', 'success');
+                $this->session->set_flashdata('status','success');
+                $this->session->set_flashdata('pesan','Data berhasil diedit!');
                 redirect('petugas');
             } else {
-                $this->session->set_flashdata('msg', 'fail');
+                $this->session->set_flashdata('status','fail');
+                $this->session->set_flashdata('pesan','Pengeditan data gagal!');
                 redirect('petugas');
             }
         } else {
@@ -84,10 +88,12 @@ class Petugas extends CI_Controller {
     public function delete($id){
         $this->db->where('id_petugas', $id);
         if ($this->db->delete('petugas')) {
-            $this->session->set_flashdata('msg', 'success');
+            $this->session->set_flashdata('status','success');
+            $this->session->set_flashdata('pesan','Penghapusan data berhasil!');
             redirect('petugas');
         } else {
-            $this->session->set_flashdata('msg', 'fail');
+            $this->session->set_flashdata('status','fail');
+            $this->session->set_flashdata('pesan','Penghapusan data gagal!');
             redirect('petugas');
         }
     }

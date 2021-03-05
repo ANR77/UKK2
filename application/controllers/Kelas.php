@@ -55,10 +55,12 @@ class Kelas extends CI_Controller {
 				'nama_kelas' => $post['nama'],
 			);
             if ($this->db->insert('kelas',$dataInput)) {
-                $this->session->set_flashdata('msg', 'success');
+                $this->session->set_flashdata('status','success');
+                $this->session->set_flashdata('pesan','Data Berhasil Diinput');
                 redirect('kelas');
             } else {
-                $this->session->set_flashdata('msg', 'fail');
+                $this->session->set_flashdata('status','fail');
+                $this->session->set_flashdata('pesan','Penginputan data gagal!');
                 redirect('kelas');
             }
         } else {
@@ -90,10 +92,12 @@ class Kelas extends CI_Controller {
 			);
             $this->db->where('id_kelas',$id);
             if ($this->db->update('kelas',$dataInput)) {
-                $this->session->set_flashdata('msg', 'success');
+                $this->session->set_flashdata('status','success');
+                $this->session->set_flashdata('pesan','Data Berhasil Diedit');
                 redirect('kelas');
             } else {
-                $this->session->set_flashdata('msg', 'fail');
+                $this->session->set_flashdata('status','success');
+                $this->session->set_flashdata('pesan','Pengeditan data gagal!');
                 redirect('kelas');
             }
         } else {
@@ -105,10 +109,12 @@ class Kelas extends CI_Controller {
     public function delete($id){
         $this->db->where('id_kelas', $id);
         if ($this->db->delete('kelas')) {
-            $this->session->set_flashdata('msg', 'success');
+            $this->session->set_flashdata('status','success');
+            $this->session->set_flashdata('pesan','Data Berhasil Dihapus');
             redirect('kelas');
         } else {
-            $this->session->set_flashdata('msg', 'fail');
+            $this->session->set_flashdata('status','fail');
+            $this->session->set_flashdata('pesan','Penghapusan data gagal!');
             redirect('kelas');
         }
     }

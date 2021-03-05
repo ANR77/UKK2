@@ -1,5 +1,5 @@
 <!-- Main Sidebar -->
-<aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+<aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0" style="z-index:1000">
     <div class="main-navbar">
         <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
             <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
