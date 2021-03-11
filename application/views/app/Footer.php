@@ -10,8 +10,8 @@
         <script src="<?= base_url('assets/js/chart.js') ?>"></script>
         <script src="<?= base_url('assets/template/scripts/shards.min.js') ?>"></script>
         <script src="<?= base_url('assets/js/jquery.sharrre.min.js') ?>"></script>
-        <script src="<?= base_url('assets/template') ?>/scripts/extras.1.1.0.min.js"></script>
-        <script src="<?= base_url('assets/template') ?>/scripts/shards-dashboards.1.1.0.min.js"></script>
-        <script src="<?= base_url('assets/template') ?>/scripts/app/app-blog-overview.1.1.0.js"></script>
+        <script src="<?= base_url('assets/template/scripts/extras.1.1.0.min.js') ?>"></script>
+        <script src="<?= base_url('assets/template/scripts/shards-dashboards.1.1.0.min.js') ?>"></script>
+        <script src="<?= base_url('assets/template/scripts/app/app-blog-overview.1.1.0.js') ?>"></script>
     </body>
 </html>

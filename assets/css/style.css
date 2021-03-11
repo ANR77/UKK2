@@ -5,3 +5,24 @@
 .disabled-form {
 	pointer-events: none;
 }
+
+/* CUSTOM SCROLLLBAR */
+/* width */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #c9c9c97b;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgb(187, 187, 187);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(167, 167, 167);
+}
