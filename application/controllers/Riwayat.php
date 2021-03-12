@@ -10,10 +10,17 @@ class Riwayat extends CI_Controller {
         }
     }
 
+    // GET JSON DETAIL DATA PEMBAYARAN
+    public function getDetail($id){
+        $this->load->model('M_Riwayat');
+		echo json_encode($this->M_Riwayat->getDetailPembayaran($id));
+    }
+
 	public function index(){
+        $this->load->model('M_Riwayat');
         $data = array(
             'title' => 'Riwayat Pembayaran',
-            // 'dataPetugas' => $this->getDataTabel()
+            'dataRiwayat' => $this->M_Riwayat->getDataTabel()
         );
         template('riwayat/index',$data);
 	}
