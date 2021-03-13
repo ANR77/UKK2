@@ -16,6 +16,15 @@ class Riwayat extends CI_Controller {
 		echo json_encode($this->M_Riwayat->getDetailPembayaran($id));
     }
 
+    public function siswa($nisn){
+        $this->load->model('M_Riwayat');
+        $data = array(
+            'title' => 'Riwayat Pembayaran',
+            'dataRiwayat' => $this->M_Riwayat->getDataTabelSiswa($nisn)
+        );
+        template('riwayat/index',$data);
+    }
+
 	public function index(){
         $this->load->model('M_Riwayat');
         $data = array(

@@ -43,14 +43,21 @@ class Login extends CI_Controller {
 			$this->load->model('M_Login');
 
 			$user = $this->M_Login->authPetugas($data['username'],$data['password']);
-			if ($user) {
-				// $user['PASSWORD'] == md5($password)
+			if ($user->level == "admin") {
 				$this->session->set_userdata('login', TRUE);
+				$this->session->set_userdata('id', $user->id_petugas);
 				$this->session->set_userdata('nama', $user->nama_petugas);
 				$this->session->set_userdata('level', $user->level);
 				redirect('dashboard');
-				return;
-			} else {
+			} 
+			elseif ($user->level == "petugas") {
+				$this->session->set_userdata('login', TRUE);
+				$this->session->set_userdata('id', $user->id_petugas);
+				$this->session->set_userdata('nama', $user->nama_petugas);
+				$this->session->set_userdata('level', $user->level);
+				redirect('transaksi');
+			} 
+			else {
 				$this->session->set_userdata('error_login', TRUE);
 				redirect('/');
 			}
@@ -71,9 +78,10 @@ class Login extends CI_Controller {
 		if ($user) {
 			// $user['PASSWORD'] == md5($password)
 			$this->session->set_userdata('login', TRUE);
+			$this->session->set_userdata('nisn', $user->nisn);
 			$this->session->set_userdata('nama', $user->nama);
 			$this->session->set_userdata('level', 'siswa');
-			redirect('dashboard');
+			redirect('riwayat/siswa/'.$user->nisn);
 			return;
 		} else {
 			$this->session->set_userdata('error_login', TRUE);

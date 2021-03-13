@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-12 mt-3">
                     <div class="card" id="card-spp">
-                        <div class="card-body pt-0" id="card-body-bulan">
+                        <div class="card-body" id="card-body-bulan">
                             <div class="overflow-auto" id="card-body-bulan-inner">
                                 <table id="tabel-bulan" class="table-striped table-hover mt-md-4 mb-4">
                                     <thead>

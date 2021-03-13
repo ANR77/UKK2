@@ -10,7 +10,7 @@
                         <span class="d-none d-md-inline-block"><?= $this->session->nama ?></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-small">
-                        <a class="dropdown-item" href="user-profile-lite.html"><i class="material-icons">&#xE7FD;</i> Profile</a>
+                        <a class="dropdown-item" href="<?= ($this->session->level == 'siswa') ? base_url('profil/siswa/'.$this->session->nisn) : base_url('profil/petugas/'.$this->session->id) ; ?>"><i class="material-icons">&#xE7FD;</i> Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="<?= base_url('login/logout') ?>">
                         <i class="material-icons text-danger">&#xE879;</i> Logout </a>

@@ -75,7 +75,7 @@
             <!-- PETUGAS -->
             <?php if ($this->session->level == 'petugas') { ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($title == 'Dashboard') ? "active" : " " ; ?>" href="add-new-post.html">
+                    <a class="nav-link <?= ($title == 'Transaksi') ? "active" : " " ; ?>" href="<?= base_url('transaksi') ?>">
                         <i class="fas fa-cash-register"></i>
                         <span>Transaksi</span>
                     </a>
@@ -83,26 +83,26 @@
             <?php }?>
             <?php if ($this->session->level == 'petugas') { ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= ($title == 'History') ? "active" : " " ; ?>" href="add-new-post.html">
+                    <a class="nav-link <?= ($title == 'Riwayat Pembayaran') ? "active" : " " ; ?>" href="<?= base_url('riwayat') ?>">
                         <i class="fas fa-history"></i>
-                        <span>History</span>
+                        <span>Riwayat Pembayaran</span>
                     </a>
                 </li>
             <?php }?>
             <!-- SISWA -->
             <?php if ($this->session->level == 'siswa') {  ?>
-                <li class="nav-item <?= ($title == 'Profil') ? "active" : " " ; ?>">
-                    <a class="nav-link " href="form-components.html">
-                    <i class="fas fa-user"></i>
-                        <span>Profil</span>
+                <li class="nav-item">
+                    <a class="nav-link <?= ($title == 'Riwayat Pembayaran') ? "active" : " " ; ?>" href="<?= base_url('riwayat/siswa/'.$this->session->nisn) ?>">
+                        <i class="fas fa-history"></i>
+                        <span>Riwayat Pembayaran</span>
                     </a>
                 </li>
             <?php }?>
             <?php if ($this->session->level == 'siswa') {  ?>
-                <li class="nav-item <?= ($title == 'History') ? "active" : " " ; ?>">
-                    <a class="nav-link " href="form-components.html">
-                        <i class="fas fa-history"></i>
-                        <span>History</span>
+                <li class="nav-item">
+                    <a class="nav-link <?= ($title == 'Profil') ? "active" : " " ; ?>" href="<?= base_url('profil/siswa/'.$this->session->nisn) ?>">
+                    <i class="fas fa-user"></i>
+                        <span>Profil</span>
                     </a>
                 </li>
             <?php }?>

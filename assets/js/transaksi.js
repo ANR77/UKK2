@@ -222,6 +222,6 @@ function toThousand(num){
     return num_parts.join(".");
 }
 
-$('#kiri').height($('#kanan').height());
-$('#card-body-spp-inner').height($('#kanan-bawah').innerHeight());
+// $('#kiri').height($('#kanan').height());
+// $('#card-body-spp-inner').height($('#kanan-bawah').innerHeight());
 $('#card-body-bulan-inner').height($('#kanan-bawah').innerHeight());
