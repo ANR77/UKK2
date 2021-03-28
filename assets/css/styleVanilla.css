@@ -1,4 +1,13 @@
-footer{
-    position: fixed;
-    bottom: 0;
+footer {
+	position: fixed;
+	bottom: 0;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.login-petugas:hover {
+	color: #007bff;
+	text-decoration: underline;
 }

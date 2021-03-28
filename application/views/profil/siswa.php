@@ -49,6 +49,35 @@
                     </div>
                 </div>
             </div>
+
+            <h6 class="mt-3">Daftar SPP</h6>
+            <div class="row">
+                <?php for ($i=0; $i < count($dataSpp); $i++) { ?>
+                    <div class="col-6">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card shadow-sm border">
+                                <div class="card-header p-0 border-bottom" id="headingOne">
+                                    <button class="btn btn-block d-flex justify-content-between" type="button" data-toggle="collapse" data-target="#spp<?= $i?>" aria-expanded="true" aria-controls="collapseOne"><h6 class="m-0"><span class="text-truncate" style="max-width: 50px;"><?= $dataSpp[$i]['keterangan'] ?></span> | <span><?= $dataSpp[$i]['tingkat'] ?></span> | <span>Rp. <?= $dataSpp[$i]['nominal_angsuran'] ?></span></h6><?= ($dataSpp[$i]['angsuran'] == count($bulan)) ? '<div class="badge badge-success align-self-end">Lunas</div>' : '<div class="badge badge-danger align-self-end">Belum</div>' ; ?></button>
+                                </div>
+                                <div id="spp<?= $i?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body px-0 pt-1 pb-2 row">
+                                        <div class="col-6">
+                                            <?php for ($j=0; $j < 6; $j++) { ?>
+                                                <div class="btn btn-block d-flex justify-content-between pt-1 pb-0" ><h6 class="m-0"><?= $bulan[$j] ?></h6><?= ($j < $dataSpp[$i]['angsuran']) ? '<div class="badge badge-success align-self-end">Lunas</div>' : '<div class="badge badge-danger align-self-end">Belum</div>' ; ?></div>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="col-6">
+                                            <?php for ($j=6; $j < 12; $j++) { ?>
+                                                <div class="btn btn-block d-flex justify-content-between pt-1 pb-0" ><h6 class="m-0"><?= $bulan[$j] ?></h6><?= ($j < $dataSpp[$i]['angsuran']) ? '<div class="badge badge-success align-self-end">Lunas</div>' : '<div class="badge badge-danger align-self-end">Belum</div>' ; ?></div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>                
+            </div>
         </div>
     </div>
 

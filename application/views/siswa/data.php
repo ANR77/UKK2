@@ -7,7 +7,7 @@
         </div>
         <div class="col-12 col-sm-8 d-flex justify-content-end">
             <div class="flex flex-row justify-content-end">
-                <a href="<?= base_url('siswa/create') ?>" class="btn btn-primary mr-0 mt-3 mt-sm-0"><i class="fas fa-plus mr-2"></i>Tambah Data</a>
+                <a href="<?= base_url('siswa/create') ?>" class="btn btn-success mr-0 mt-3 mt-sm-0"><i class="fas fa-plus mr-2"></i>Tambah Data</a>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
                         <td class="alamat"><?= $dataSiswa[$i]['alamat'] ?></td>
                         <td><?= $dataSiswa[$i]['no_telp'] ?></td>
                         <td>
-                            <a class="btn btn-primary p-1" href="<?= base_url('Siswa/edit/'.$dataSiswa[$i]['nisn']) ?>"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-success p-1" href="<?= base_url('Siswa/edit/'.$dataSiswa[$i]['nisn']) ?>"><i class="fas fa-edit"></i></a>
                             <a class="btn btn-danger p-1" data-id="<?= $dataSiswa[$i]['nisn'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>

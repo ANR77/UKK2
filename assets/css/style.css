@@ -26,3 +26,32 @@
 ::-webkit-scrollbar-thumb:hover {
 	background: rgb(167, 167, 167);
 }
+
+.user-avatar{
+	opacity: 0.6;
+}
+
+/* DASHBOARD */
+.label-dashboard{
+	color: #818ea3;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	line-height: 18px;
+}
+
+.value-dashboard{
+	color: #3d5170;
+	font-size: 33px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	line-height: 24px;
+	font-family: Roboto;
+}
+
+.bg-icon{
+	font-size: 150px;
+	right: -20%;
+	bottom: -30%;
+	opacity: 0.1;
+}

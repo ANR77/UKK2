@@ -37,7 +37,7 @@
                             <td class="nominal"><?= $dataRiwayat[$i]['jumlah_bayar'] ?></td>
                             <td><?= $dataRiwayat[$i]['nama_petugas'] ?></td>
                             <td>
-                                <a class="btn btn-primary px-2 py-1" onclick="showDetail(<?= $dataRiwayat[$i]['id_pembayaran'] ?>)"><i class="fas fa-info"></i></a>
+                                <a class="btn btn-success px-2 py-1" onclick="showDetail(<?= $dataRiwayat[$i]['id_pembayaran'] ?>)"><i class="fas fa-info"></i></a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -106,14 +106,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="modal-footer row border-0">
-                    <div class="col">
-                        <a id="btn-modal-delete" type="button" class="btn btn-danger btn-block">Iya</a>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Batal</button>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>

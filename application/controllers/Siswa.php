@@ -43,7 +43,7 @@ class Siswa extends CI_Controller {
     public function create(){
         $this->load->model('M_Siswa');
         $data = array(
-            'title' => 'Data Petugas',
+            'title' => 'Data Siswa',
             'dataSiswa' => $this->M_Siswa->getSiswa(),
             'dataKelas' => $this->getDataKelas(),
         );

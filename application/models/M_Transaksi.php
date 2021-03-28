@@ -29,6 +29,7 @@ class M_Transaksi extends CI_Model
         WHERE siswa.nisn LIKE "%'.$condition.'%" OR siswa.nama LIKE "%'.$condition.'%"')->result_array();
     }
 
+    // Pembayaran Gagal
     function failPembayaran($data){
         return $this->db->select('id_pembayaran')
         ->from('pembayaran')

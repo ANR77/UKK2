@@ -7,7 +7,7 @@
         </div>
         <div class="col-12 col-sm-8 d-flex justify-content-end">
             <div class="flex flex-row justify-content-end">
-                <a href="<?= base_url('petugas/create') ?>" class="btn btn-primary mr-0 mt-3 mt-sm-0"><i class="fas fa-plus mr-2"></i>Tambah Data</a>
+                <a href="<?= base_url('petugas/create') ?>" class="btn btn-success mr-0 mt-3 mt-sm-0"><i class="fas fa-plus mr-2"></i>Tambah Data</a>
             </div>
         </div>
     </div>
@@ -35,8 +35,8 @@
                         <td><?= $dataPetugas[$i]['nama_petugas'] ?></td>
                         <td><?= $dataPetugas[$i]['level'] ?></td>
                         <td>
-                            <a class="btn btn-primary p-1" href="<?= base_url('petugas/edit/'.$dataPetugas[$i]['id_petugas']) ?>"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger p-1" data-id="<?= $dataPetugas[$i]['id_petugas'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i></a>
+                            <a class="btn btn-success p-1" href="<?= base_url('petugas/edit/'.$dataPetugas[$i]['id_petugas']) ?>"><i class="fas fa-edit"></i> Edit</a>
+                            <a class="btn btn-danger p-1" data-id="<?= $dataPetugas[$i]['id_petugas'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i> Delete</a>
                         </td>
                     </tr>
                 <?php } ?>

@@ -4,7 +4,8 @@
         <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
             <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
                 <div class="d-table m-auto">
-                    <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="<?= base_url('assets/template/') ?>images/shards-dashboards-logo.svg" alt="Shards Dashboard">
+                    <!-- <span class="rounded-circle p-2 bg-primary"> -->
+                        <i class="fas fa-file-invoice text-success fa-lg mr-1"></i>
                     <span class="d-none d-md-inline ml-1">ASpp</span>
                 </div>
             </a>

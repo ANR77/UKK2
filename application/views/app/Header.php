@@ -9,7 +9,7 @@
         <link href="<?= base_url('assets/fontawesome/css/all.min.css') ?>" rel="stylesheet"><!-- FONTAWESOME -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="<?= base_url('assets/bootstrap/css/bootstrap.min.css') ?>" crossorigin="anonymous"><!-- BOOTSTRAP -->
-        <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="<?= base_url('assets/template/styles/shards-dashboards.1.1.0.min.css') ?>"><!-- TEMPLATE -->
+        <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="<?= base_url('assets/template/styles/accents/success.1.1.0.min.css') ?>"><!-- TEMPLATE -->
         <link rel="stylesheet" href="<?= base_url('assets/template/styles/extras.1.1.0.min.css') ?>"><!-- TEMPLATE -->
         <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>"><!-- CUSTOM -->
         <script src="<?= base_url('assets/js/jquery.js') ?>"></script> <!-- JQUERY -->

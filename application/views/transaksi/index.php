@@ -1,13 +1,4 @@
 <div id="div-parent" class="main-content-container container-fluid p-4">
-    <!-- Page Header -->
-    <!-- <div class="page-header row no-gutters py-4">
-        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-        <span class="text-uppercase page-subtitle"><?= $this->session->level ?></span>
-        <h3 class="page-title">Transaksi</h3>
-        </div>
-    </div> -->
-    <!-- End Page Header -->
-
     <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
 
@@ -19,7 +10,7 @@
                 <div class="col-12">
                     <div class="card" id="card-spp">
                         <div class="card-header pt-4">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-search"><i class="fas fa-search pr-2"></i> Search Siswa</button>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-search"><i class="fas fa-search pr-2"></i> Search Siswa</button>
                         </div>
                         <div class="card-body pt-0" id="card-body-spp">
                             <div class="overflow-auto" id="card-body-spp-inner">
@@ -115,7 +106,7 @@
                     <input type="hidden" name="tgl-bayar" id="tgl-bayar">
                     <input type="hidden" name="id-spp" id="id-spp">
                     <input type="hidden" name="angsuran" id="angsuran">
-                    <button id="btn-bayar" type="submit" class="btn btn-primary btn-block" disabled>Bayar</button>
+                    <button id="btn-bayar" type="submit" class="btn btn-success btn-block mb-2" disabled>Bayar</button>
                 </div>
             </form>
         </div>
@@ -137,7 +128,7 @@
                             <div class="input-group mb-3">
                                 <input type="text" name="search-siswa" id="search-siswa" class="form-control" placeholder="NISN atau Nama Siswa">
                                 <div class="input-group-append">
-                                    <button id="btn-search" class="input-group-text btn btn-primary"><i class="fas fa-search"></i></button>
+                                    <button id="btn-search" class="input-group-text btn btn-success"><i class="fas fa-search"></i></button>
                                 </div>
                             </div>
                         </div>

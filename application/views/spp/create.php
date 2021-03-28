@@ -84,7 +84,7 @@
                             <?php for ($i=0; $i < count($dataTingkat); $i++) { ?>
                                 <option value="<?= $dataTingkat[$i]['tingkat_kelas'] ?>"><?= $dataTingkat[$i]['tingkat_kelas'] ?></option>
                             <?php } ?></select>                        
-                        <button type="submit" class="btn btn-primary btn-block mt-5">Simpan</button>
+                        <button type="submit" class="btn btn-success btn-block mt-5">Simpan</button>
                     </div>
                 </form>
             </div>

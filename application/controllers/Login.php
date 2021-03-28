@@ -78,6 +78,7 @@ class Login extends CI_Controller {
 		if ($user) {
 			// $user['PASSWORD'] == md5($password)
 			$this->session->set_userdata('login', TRUE);
+			$this->session->set_userdata('id_siswa', $user->id_siswa);
 			$this->session->set_userdata('nisn', $user->nisn);
 			$this->session->set_userdata('nama', $user->nama);
 			$this->session->set_userdata('level', 'siswa');

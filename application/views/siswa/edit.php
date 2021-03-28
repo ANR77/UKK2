@@ -71,7 +71,7 @@
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block mt-5">Simpan</button>
+                        <button type="submit" class="btn btn-success btn-block mt-5">Simpan</button>
                     </div>
                 </form>
             </div>

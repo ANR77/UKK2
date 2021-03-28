@@ -46,7 +46,7 @@ function searchSiswa(){
                 tabelSiswa.clear();
                 for (let i = 0; i < data.length; i++) {
                     tabelSiswa.row.add([
-                        '<span data_id="'+data[i]['id_siswa']+'" onclick=setSpp('+data[i]['id_siswa']+') class="btn-set-spp badge badge-primary cursor-pointer">Pilih</span>',
+                        '<span data_id="'+data[i]['id_siswa']+'" onclick=setSpp('+data[i]['id_siswa']+') class="btn-set-spp badge badge-success cursor-pointer">Pilih</span>',
                         data[i]['nisn'],
                         data[i]['nama'],
                         data[i]['kelas_full']
@@ -112,7 +112,7 @@ function setSpp(id) {
             $('#modal-search').modal('hide');
             for (let i = 0; i < data.length; i++) {
                 tabelSpp.row.add([
-                    '<span class="badge badge-primary cursor-pointer" onclick="toBulan('+data[i]['id_siswa_spp']+')"><i class="fas fa-plus"></i></span>',
+                    '<span class="badge badge-success cursor-pointer" onclick="toBulan('+data[i]['id_siswa_spp']+')"><i class="fas fa-plus"></i></span>',
                     data[i]['tahun'],
                     data[i]['tingkat'],
                     data[i]['keterangan']

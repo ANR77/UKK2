@@ -96,7 +96,7 @@ class Kelas extends CI_Controller {
                 $this->session->set_flashdata('pesan','Data Berhasil Diedit');
                 redirect('kelas');
             } else {
-                $this->session->set_flashdata('status','success');
+                $this->session->set_flashdata('status','fail');
                 $this->session->set_flashdata('pesan','Pengeditan data gagal!');
                 redirect('kelas');
             }

@@ -19,11 +19,68 @@ class Profil extends CI_Controller {
         template('profil/petugas',$data);
     }
 
+    // RETURN FOR AJAX REQUEST CEK PASSWORD
+    public function cekPassword(){
+        $id_petugas =  $this->uri->segment(3);
+        $password =  $this->uri->segment(4);
+        $this->load->model('M_Profil');
+		echo json_encode($this->M_Profil->cekPassword($id_petugas,md5($password)));
+    }
+
+    // Ubah Password dari request ajax
+    public function ubahPassword(){
+        $id_petugas =  $this->uri->segment(3);
+        $password =  $this->uri->segment(4);
+
+        $this->db->set('password',md5($password));
+        $this->db->where('id_petugas',$id_petugas);
+        if ($this->db->update('petugas')) {
+            echo json_encode(true);
+        } else {
+            echo json_encode(false);
+        }
+    }
+
+    // Ubah data petugas
+    public function ubahData($id_petugas){
+        $post = $this->input->post();
+        $dataInput = array(
+            'nama_petugas' => $post['nama'],
+            'username' => $post['username']
+        );
+        $this->db->where('id_petugas',$id_petugas);
+        if ($this->db->update('petugas',$dataInput)) {
+            $this->session->set_flashdata('status','success');
+            $this->session->set_flashdata('pesan','Data Berhasil Diedit');
+            redirect('profil/petugas/'.$id_petugas);
+        } else {
+            $this->session->set_flashdata('status','fail');
+            $this->session->set_flashdata('pesan','Pengeditan data gagal!');
+            redirect('profil/petugas/'.$id_petugas);
+        }
+    }
+
     public function siswa($nisn){
+        $bulan = array(
+            "Juli", 
+            "Agustus", 
+            "September", 
+            "Oktober", 
+            "November", 
+            "Desember", 
+            "Januari", 
+            "Februari", 
+            "Maret", 
+            "April", 
+            "Mei", 
+            "Juni"
+        );
         $this->load->model('M_Profil');
         $data = array(
             'title' => 'Profil',
             'dataSiswa' => $this->M_Profil->getProfilSiswa($nisn),
+            'dataSpp' => $this->M_Profil->getDataSpp($this->session->id_siswa),
+            'bulan' => $bulan
         );
         template('profil/siswa',$data);
     }

@@ -7,7 +7,7 @@
         </div>
         <div class="col-12 col-sm-8 d-flex justify-content-end">
             <div class="flex flex-row justify-content-end">
-                <a href="<?= base_url('spp/create') ?>" class="btn btn-primary mr-0 mt-3 mt-sm-0"><i class="fas fa-plus mr-2"></i>Tambah Data</a>
+                <a href="<?= base_url('spp/create') ?>" class="btn btn-success mr-0 mt-3 mt-sm-0"><i class="fas fa-plus mr-2"></i>Tambah Data</a>
             </div>
         </div>
     </div>
