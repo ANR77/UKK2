@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
     <div class="card p-3 shadow-none">
-        <table id="tabel-spp" class="table-hover table-striped">
+        <table id="tabel-spp" class="table-hover table-striped table-responsive-md">
             <thead>
                 <tr>
                     <th>No</th>
@@ -26,7 +26,7 @@
                     <th>Tingkat</th>
                     <th>Jumlah Angsuran</th>
                     <th>Nominal Angsuran</th>
-                    <!-- <th>Aksi</th> -->
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,25 +38,13 @@
                         <td><?= $dataSpp[$i]['tingkat'] ?></td>
                         <td class="nominal"><?= $dataSpp[$i]['jumlah_angsuran'] ?></td>
                         <td class="nominal"><?= $dataSpp[$i]['nominal_angsuran'] ?></td>
-                        <!-- <td>
-                            <a class="btn btn-primary p-1" href="<?= base_url('spp/edit/'.$dataSpp[$i]['nisn']) ?>"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger p-1" data-id="<?= $dataSpp[$i]['nisn'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i></a>
-                        </td> -->
+                        <td>
+                            <a class="btn btn-success p-1" href="<?= base_url('spp/edit/'.$dataSpp[$i]['id_spp']) ?>"><i class="fas fa-edit"></i> Edit</a>
+                            <a class="btn btn-secondary p-1" href="<?= base_url('spp/laporan/'.$dataSpp[$i]['id_spp']) ?>"><i class="fas fa-file-alt"></i> Laporan</a>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
-            <tfoot>
-                <tr>
-                    <!-- <th>No</th>
-                    <th>NISN</th>
-                    <th>NIS</th>
-                    <th>Nama</th>
-                    <th>Siswa</th>
-                    <th>Alamat</th>
-                    <th>No. Telepon</th> -->
-                    <!-- <th>Aksi</th> -->
-                </tr>
-            </tfoot>
         </table>
     </div>
 

@@ -61,6 +61,7 @@ class Siswa extends CI_Controller {
 				'id_kelas' => $post['kelas'],
 				'alamat' => $post['alamat'],
 				'no_telp' => $post['no_telp'],
+				'password' => md5($post['nis']),
 			);
             if ($this->db->insert('siswa',$dataInput)) {
                 $this->session->set_flashdata('status','success');
@@ -98,6 +99,7 @@ class Siswa extends CI_Controller {
 				'id_kelas' => $post['kelas'],
 				'alamat' => $post['alamat'],
 				'no_telp' => $post['no_telp'],
+				'password' => md5($post['nis']),
 			);
             $this->db->where('nisn',$nisn);
             if ($this->db->update('siswa',$dataInput)) {

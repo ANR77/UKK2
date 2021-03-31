@@ -60,6 +60,28 @@ class Profil extends CI_Controller {
         }
     }
 
+    // RETURN FOR AJAX REQUEST CEK PASSWORD SISWA
+    public function cekPasswordSiswa(){
+        $id_petugas =  $this->uri->segment(3);
+        $password =  $this->uri->segment(4);
+        $this->load->model('M_Profil');
+		echo json_encode($this->M_Profil->cekPasswordSiswa($id_petugas,md5($password)));
+    }
+
+    // Ubah Password dari request ajax
+    public function ubahPasswordSiswa(){
+        $id_siswa =  $this->uri->segment(3);
+        $password =  $this->uri->segment(4);
+
+        $this->db->set('password',md5($password));
+        $this->db->where('id_siswa',$id_siswa);
+        if ($this->db->update('siswa')) {
+            echo json_encode(true);
+        } else {
+            echo json_encode(false);
+        }
+    }
+
     public function siswa($nisn){
         $bulan = array(
             "Juli", 

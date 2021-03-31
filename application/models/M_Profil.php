@@ -27,6 +27,14 @@ class M_Profil extends CI_Model
         ->get()->row_array();
     }
 
+    function cekPasswordSiswa($id_siswa, $password){
+        return $this->db->select('*')
+        ->from('siswa')
+        ->where('id_siswa',$id_siswa)
+        ->where('password',$password)
+        ->get()->row_array();
+    }
+
     // Get data spp siswa
     function getDataSpp($id_siswa){
         return $this->db->query('SELECT siswa_spp.angsuran, spp.nominal_angsuran, spp.keterangan, spp.tingkat

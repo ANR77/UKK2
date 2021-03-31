@@ -140,11 +140,90 @@ class Spp extends CI_Controller {
         return $data;
     }
 
+    // LOAD EDIT
+    public function edit($id_spp){
+        $this->load->model('M_Spp');
+        $data = array(
+            'title' => 'Data SPP',
+            'dataSpp' => $this->M_Spp->getSppById($id_spp)
+        );
+        template('spp/edit',$data);
+    }
+
+    //EDIT DATA TO DATABASE
+    public function editData($id_spp){
+        $post = $this->input->post();
+        $dataInput = array(
+            'keterangan' => $post['keterangan']
+        );
+        $this->db->where('id_spp',$id_spp);
+        if ($this->db->update('spp',$dataInput)) {
+            $this->session->set_flashdata('status','success');
+            $this->session->set_flashdata('pesan','Pengeditan data berhasil!');
+            redirect('spp');
+        } else {
+            $this->session->set_flashdata('status','fail');
+            $this->session->set_flashdata('pesan','Pengeditan data gagal!');
+            redirect('spp');
+        }
+    }
+
     // PARSE UANG ANGSURAN
     function parsingAngsuran($nominal){
         $final = explode(",",$nominal);
         $final = implode("",$final);
         return $final;
+    }
+
+    // LOAD LAPORAN SPP
+    public function laporan($id_spp){
+        $this->load->model('M_Spp');
+        $data = array(
+            'title' => 'Data SPP',
+            'dataKelas' => $this->M_Spp->getKelasTingkat($id_spp),
+            'idSpp' => $id_spp
+        );
+        template('spp/laporan',$data);
+    }
+
+    // Generate Laporan
+    public function generateLaporan(){
+        $this->load->model('M_Spp');
+        $id_spp =  $this->uri->segment(3);
+        $id_kelas =  $this->uri->segment(4);
+        $jumlah_tagihan = 0;
+        $jumlah_angsuran = 0;
+        $jumlah_tanggungan = 0;
+        $dataSpp = $this->M_Spp->getDataLaporan($id_spp,$id_kelas);
+        for ($i=0; $i < count($dataSpp); $i++) { 
+            $jumlah_tagihan = $jumlah_tagihan + $dataSpp[$i]['jumlah_tagihan'];
+            $jumlah_angsuran = $jumlah_angsuran + $dataSpp[$i]['jumlah_angsuran'];
+            $jumlah_tanggungan = $jumlah_tanggungan + $dataSpp[$i]['jumlah_tanggungan'];
+            $dataSpp[$i]['jumlah_tagihan'] = "Rp. ".number_format($dataSpp[$i]['jumlah_tagihan']);
+            $dataSpp[$i]['jumlah_angsuran'] = "Rp. ".number_format($dataSpp[$i]['jumlah_angsuran']);
+            $dataSpp[$i]['jumlah_tanggungan'] = "Rp. ".number_format($dataSpp[$i]['jumlah_tanggungan']);
+        }
+        $spp = $this->M_Spp->getDataSpp($id_spp);
+        $kelas = $this->M_Spp->getKelasById($id_kelas);
+        $data = array(
+            'title' => 'Laporan '.$spp['keterangan'].' '.$spp['tahun'].' - '.$kelas['kelas_full'],
+            'dataSpp' => $dataSpp,
+            'jumlah_tagihan' => "Rp. ".number_format($jumlah_tagihan),
+            'jumlah_angsuran' => "Rp. ".number_format($jumlah_angsuran),
+            'jumlah_tanggungan' => "Rp. ".number_format($jumlah_tanggungan),
+            'kelas' =>  $kelas,
+            'spp' => $spp
+
+        );
+        $this->load->view('spp/excel',$data);
+    }
+
+    // GET LAPORAN BY AJAX RETURN JSON
+    public function getLaporan(){
+        $id_spp =  $this->uri->segment(3);
+        $id_kelas =  $this->uri->segment(4);
+        $this->load->model('M_Spp');
+		echo json_encode($this->M_Spp->getDataLaporan($id_spp,$id_kelas));
     }
 
 	public function index(){

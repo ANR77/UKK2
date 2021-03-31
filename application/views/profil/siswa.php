@@ -8,6 +8,8 @@
     </div>
     <!-- End Page Header -->
 
+    <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
+
     <!-- CONTENT GOES HERE -->
     <div class="card">
         <div class="card-body">
@@ -48,6 +50,12 @@
                         <input type="text" class="form-control" id="no_telp" value="<?= $dataSiswa['no_telp'] ?>" readonly>
                     </div>
                 </div>
+                <div class="col-6">
+                    <div id="ubah-password" class="form-group">
+                        <label for="password">Password</label>
+                        <button type="button" id="btn-ubahPass" class="btn btn-success d-block" onclick="btnUbahPassword(<?= $dataSiswa['id_siswa'] ?>)">Ubah Password</button>
+                    </div>
+                </div>
             </div>
 
             <h6 class="mt-3">Daftar SPP</h6>
@@ -82,3 +90,15 @@
     </div>
 
 </div>
+
+<script src="<?= base_url('assets/toastr/build/toastr.min.js') ?>"></script>
+<script src="<?= base_url('assets/js/profilSiswa.js') ?>"></script>
+<script>
+    <?php 
+        if ($this->session->flashdata('status') == 'success') {
+            echo 'toastr.success("'.$this->session->flashdata('pesan').'")';
+        } elseif ($this->session->flashdata('status') == 'fail') {
+            echo 'toastr.error("'.$this->session->flashdata('pesan').'")';
+        }
+    ?>
+</script>

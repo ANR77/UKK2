@@ -13,7 +13,7 @@
     <!-- CONTENT GOES HERE -->
     <div class="card">
         <div class="card-body">
-            <table id="tabel-riwayat" class="table-hover table-striped">
+            <table id="tabel-riwayat" class="table-hover table-striped table-responsive-md">
                 <thead>
                     <tr>
                         <th>No</th>

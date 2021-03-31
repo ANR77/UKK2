@@ -69,4 +69,45 @@ class M_Spp extends CI_Model
         ->where('tahun',$tahun);
         return $this->db->get()->row();
     }
+
+    // get spp by id_spp
+    function getSppById($id_spp){
+        return $this->db->select('*')
+        ->from('spp')
+        ->where('id_spp',$id_spp)
+        ->get()->row_array();
+    }
+
+    // get data laporan by id_spp dan id_kelas
+    function getDataLaporan($id_spp, $id_kelas){
+        return $this->db->query('SELECT siswa.nisn, siswa.nis, siswa.nama, spp.jumlah_angsuran AS jumlah_tagihan, spp.nominal_angsuran*siswa_spp.angsuran AS jumlah_angsuran, spp.jumlah_angsuran-(spp.nominal_angsuran*siswa_spp.angsuran) AS jumlah_tanggungan
+        FROM siswa_spp
+        INNER JOIN siswa ON siswa_spp.id_siswa=siswa.id_siswa
+        INNER JOIN spp ON siswa_spp.id_spp=spp.id_spp
+        WHERE siswa.id_kelas = '.$id_kelas.' AND siswa_spp.id_spp = '.$id_spp)->result_array();
+    }
+
+    function getKelasById($id_kelas){
+        return $this->db->query('SELECT CONCAT(tingkat.tingkat_kelas," ",kejuruan.kompetensi_keahlian," ",kelas.nama_kelas) AS kelas_full
+        FROM kelas
+        INNER JOIN tingkat ON kelas.tingkat_kelas=tingkat.tingkat_kelas
+        INNER JOIN kejuruan ON kelas.id_kejuruan=kejuruan.id_kejuruan
+        WHERE kelas.id_kelas = '.$id_kelas)->row_array();
+    }
+
+    function getDataSpp($id_spp){
+        return $this->db->select('keterangan, tahun')
+        ->from('spp')
+        ->where('id_spp',$id_spp)
+        ->get()->row_array();
+    }
+
+    function getKelasTingkat($id_spp){
+        return $this->db->query('SELECT kelas.id_kelas, CONCAT(tingkat.tingkat_kelas," ",kejuruan.kompetensi_keahlian," ",kelas.nama_kelas) AS kelas_full
+        FROM spp
+        INNER JOIN kelas ON spp.tingkat=kelas.tingkat_kelas
+        INNER JOIN tingkat ON kelas.tingkat_kelas=tingkat.tingkat_kelas
+        INNER JOIN kejuruan ON kelas.id_kejuruan=kejuruan.id_kejuruan
+        WHERE spp.id_spp = '.$id_spp)->result_array();
+    }
 }

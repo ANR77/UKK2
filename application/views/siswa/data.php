@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
     <div class="card p-3 shadow-none">
-        <table id="tabel-kelas" class="table-hover table-striped">
+        <table id="tabel-kelas" class="table-hover table-striped table-responsive-md">
             <thead>
                 <tr>
                     <th>No</th>

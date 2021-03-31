@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
     <div class="card p-3 shadow-none">
-        <table id="tabel-kelas" class=" table-hover table-striped">
+        <table id="tabel-kelas" class=" table-hover table-striped table-responsive-md">
             <thead>
                 <tr>
                     <th>No</th>
@@ -33,8 +33,8 @@
                         <td><?= $dataKelas[$i]['kelas'] ?></td>
                         <td><?= $dataKelas[$i]['jumlah_siswa'] ?></td>
                         <td>
-                            <a class="btn btn-success p-1" href="<?= base_url('kelas/edit/'.$dataKelas[$i]['id_kelas']) ?>"><i class="fas fa-edit"></i> Edit</a>
-                            <a class="btn btn-danger p-1" data-id="<?= $dataKelas[$i]['id_kelas'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i> Delete</a>
+                            <a class="btn btn-success p-1" href="<?= base_url('kelas/edit/'.$dataKelas[$i]['id_kelas']) ?>"><i class="fas fa-edit"></i><span class="d-none d-lg-inline"> Edit</span></a>
+                            <a class="btn btn-danger p-1" data-id="<?= $dataKelas[$i]['id_kelas'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i><span class="d-none d-lg-inline"> Hapus</span></a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -70,12 +70,7 @@
     </div>
     <script>
         $(document).ready( function () {
-            $('#tabel-kelas').DataTable( {
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ]
-            } );
+            $('#tabel-kelas').DataTable();
         } );
 
         $('#modalDelete').on('shown.bs.modal', function (event) {

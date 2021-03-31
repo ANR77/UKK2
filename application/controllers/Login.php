@@ -70,11 +70,11 @@ class Login extends CI_Controller {
 		$post = $this->input->post();
 		$data = array(
 			'nisn' => $post['nisn'],
-			'nis' => $post['nis']
+			'password' => $post['password']
 		);
 		$this->load->model('M_Login');
 
-		$user = $this->M_Login->authSiswa($data['nisn'],$data['nis']);
+		$user = $this->M_Login->authSiswa($data['nisn'],md5($data['password']));
 		if ($user) {
 			// $user['PASSWORD'] == md5($password)
 			$this->session->set_userdata('login', TRUE);

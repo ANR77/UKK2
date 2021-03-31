@@ -12,12 +12,12 @@ class M_Login extends CI_Model
     }
 
     //cek nama dan password user
-    function authSiswa($nisn,$nis){
+    function authSiswa($nisn,$password){
         // $pass = md5($password);
         $this->db->select('*');
         $this->db->from('siswa');
         $this->db->where('nisn', $nisn);
-        $this->db->where('nis', $nis);
+        $this->db->where('password', $password);
         return $this->db->get()->row();
     }
 }

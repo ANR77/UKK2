@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
     <div class="card p-3 shadow-none">
-        <table id="tabel-petugas" class="table-hover table-striped">
+        <table id="tabel-petugas" class="table-hover table-striped table-responsive-md">
             <thead>
                 <tr>
                     <th>No</th>
@@ -36,7 +36,7 @@
                         <td><?= $dataPetugas[$i]['level'] ?></td>
                         <td>
                             <a class="btn btn-success p-1" href="<?= base_url('petugas/edit/'.$dataPetugas[$i]['id_petugas']) ?>"><i class="fas fa-edit"></i> Edit</a>
-                            <a class="btn btn-danger p-1" data-id="<?= $dataPetugas[$i]['id_petugas'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i> Delete</a>
+                            <a class="btn btn-danger p-1" data-id="<?= $dataPetugas[$i]['id_petugas'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i> Hapus</a>
                         </td>
                     </tr>
                 <?php } ?>

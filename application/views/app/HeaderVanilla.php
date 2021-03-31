@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>App Spp - <?= $title ?></title>
+        <link rel="icon" href="<?= base_url('assets/img/tab-icon.png') ?>">
         <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="<?= base_url('assets/fontawesome/css/all.min.css') ?>" rel="stylesheet"><!-- FONTAWESOME -->

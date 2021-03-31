@@ -64,44 +64,42 @@
             </div>
         </div>
     </div>
-
-    <div class="card">
-        <div class="card-header pb-0 text-center">
-            <h4 class="mt-2 text-success">Transaksi hari ini</h4>
-        </div>
-        <div class="card-body pt-2">
-            <table id="tabel-transaksi" class="table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>NISN</th>
-                            <th>Nama Siswa</th>
-                            <th>Kelas</th>
-                            <th>Tanggal Bayar</th>
-                            <th>Jumlah Bayar</th>
-                            <th>Petugas</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php for ($i=0; $i < count($dataTransaksi); $i++) { ?>
+    <div class="row">
+        <div class="col-12">     
+            <div class="card">
+                <div class="card-header pb-0 text-center">
+                    <h4 class="mt-2 text-success">Transaksi hari ini</h4>
+                </div>
+                <div class="card-body pt-2">
+                    <table id="tabel-transaksi" class="table-hover table-striped">
+                        <thead>
                             <tr>
-                                <td><?= $i+1 ?></td>
-                                <td><?= $dataTransaksi[$i]['nisn'] ?></td>
-                                <td><?= $dataTransaksi[$i]['nama'] ?></td>
-                                <td><?= $dataTransaksi[$i]['kelas_full'] ?></td>
-                                <td><?= $dataTransaksi[$i]['tgl_bayar'] ?></td>
-                                <td class="nominal"><?= $dataTransaksi[$i]['jumlah_bayar'] ?></td>
-                                <td><?= $dataTransaksi[$i]['nama_petugas'] ?></td>
-                                <td>
-                                    <a class="btn btn-success px-2 py-1" onclick="showDetail(<?= $dataTransaksi[$i]['id_pembayaran'] ?>)"><i class="fas fa-info"></i></a>
-                                </td>
+                                <th>No</th>
+                                <th>Nama Siswa</th>
+                                <th>Jumlah Bayar</th>
+                                <th>Petugas</th>
+                                <th>Aksi</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php for ($i=0; $i < count($dataTransaksi); $i++) { ?>
+                                <tr>
+                                    <td><?= $i+1 ?></td>
+                                    <td><?= $dataTransaksi[$i]['nama'] ?></td>
+                                    <td class="nominal"><?= $dataTransaksi[$i]['jumlah_bayar'] ?></td>
+                                    <td><?= $dataTransaksi[$i]['nama_petugas'] ?></td>
+                                    <td>
+                                        <a class="btn btn-success px-2 py-1" onclick="showDetail(<?= $dataTransaksi[$i]['id_pembayaran'] ?>)"><i class="fas fa-info"></i></a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+
 </div>
 
 <!-- Modal -->
@@ -173,7 +171,12 @@
 
 <script>
     $(document).ready( function () {
-        $('#tabel-transaksi').DataTable();
+        $('#tabel-transaksi').DataTable( {
+                dom: 't',
+                language : {
+                    "emptyTable": "Belum ada transaksi"
+                }
+            } );
         $('.nominal').each(function() {
             let temp = "Rp. "+$(this).text().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             $(this).html(temp);

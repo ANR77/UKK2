@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>App Spp - <?= $title ?></title>
+        <link rel="icon" href="<?= base_url('assets/img/tab-icon.png') ?>">
         <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="<?= base_url('assets/fontawesome/css/all.min.css') ?>" rel="stylesheet"><!-- FONTAWESOME -->
@@ -52,7 +53,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Login Siswa</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Login Petugas</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -65,7 +66,7 @@
                             </div>
                             <div class="form-group col-12">
                                 <label for="password">Password</label>
-                                <input type="type" class="form-control" name="password" required>
+                                <input type="password" class="form-control" name="password" required>
                             </div>
                             <button type="submit" class="btn btn-success btn-block mt-4 mb-3">Submit</button>
                         </form>
