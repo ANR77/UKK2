@@ -53,7 +53,7 @@
                 <div class="col-6">
                     <div id="ubah-password" class="form-group">
                         <label for="password">Password</label>
-                        <button type="button" id="btn-ubahPass" class="btn btn-success d-block" onclick="btnUbahPassword(<?= $dataSiswa['id_siswa'] ?>)">Ubah Password</button>
+                        <button type="button" id="btn-ubahPass" class="btn btn-success d-block btn-sm" onclick="btnUbahPassword(<?= $dataSiswa['id_siswa'] ?>)">Ubah Password</button>
                     </div>
                 </div>
             </div>

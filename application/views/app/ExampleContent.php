@@ -1,13 +1,7 @@
-<div class="main-content-container container-fluid px-4">
-    <!-- Page Header -->
-    <div class="page-header row no-gutters py-4">
-        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-        <span class="text-uppercase page-subtitle">Dashboard</span>
-        <h3 class="page-title">Blog Overview</h3>
-        </div>
-    </div>
-    <!-- End Page Header -->
-
-    <!-- CONTENT GOES HERE -->
-
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-start mb-4">
+    <a href="<?= base_url('master/aplikasi') ?>" class="btn-back"><i class="fas fa-arrow-circle-left mr-2"></i></a>
+    <h1 class="h3 mb-0 text-gray-800">Tambah Data Aplikasi</h1>
 </div>
+
+<!-- CONTENT GOES HERE -->

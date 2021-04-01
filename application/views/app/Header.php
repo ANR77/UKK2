@@ -1,22 +1,21 @@
-<!doctype html>
-<html class="no-js h-100" lang="en">
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>APP SPP - <?= $title ?></title>
-        <link rel="icon" href="<?= base_url('assets/img/tab-icon.png') ?>">
-        <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="<?= base_url('assets/fontawesome/css/all.min.css') ?>" rel="stylesheet"><!-- FONTAWESOME -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>APP SPP - <?= $title ?></title>
+        <link rel="icon" href="<?= base_url('assets/img/tab-icon.png') ?>"><!-- ICON -->
+        <link rel="stylesheet" href="<?= base_url('assets/fontawesome/css/all.min.css') ?>"><!-- FONTAWESOME -->
         <link rel="stylesheet" href="<?= base_url('assets/bootstrap/css/bootstrap.min.css') ?>" crossorigin="anonymous"><!-- BOOTSTRAP -->
-        <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="<?= base_url('assets/template/styles/accents/success.1.1.0.min.css') ?>"><!-- TEMPLATE -->
-        <link rel="stylesheet" href="<?= base_url('assets/template/styles/extras.1.1.0.min.css') ?>"><!-- TEMPLATE -->
+        <link rel="stylesheet" href="<?= base_url('assets/sbadmin/css/sb-admin-2.min.css') ?>"><!-- TEMPLATE -->
         <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>"><!-- CUSTOM -->
         <script src="<?= base_url('assets/js/jquery.js') ?>"></script> <!-- JQUERY -->
-        <script src="<?= base_url('assets/js/button.js') ?>"></script><!-- async defer  -->
+        <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
     </head>
-    <body class="h-100">
-        <div class="container-fluid"> <!-- THE BIG CONTAINER -->
-            <div class="row"> <!-- THE BIG ROW -->
-                <!-- Sidebar.php -->
+
+    <body id="page-top">
+        <!-- Page Wrapper -->
+        <div id="wrapper">

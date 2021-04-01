@@ -1,7 +1,7 @@
 function btnUbahPassword(id_petugas) {
     $("#btn-ubahPass").removeClass('d-block');
     $("#btn-ubahPass").addClass('d-none');
-    $('#ubah-password').append('<div id="verif-password" class="d-flex"><input type="password" class="form-control mr-1" id="password" placeholder="Masukkan password lama""><button  id="btn-submit" class="btn btn-success mx-1" onclick="verifikasi('+id_petugas+')">Submit</button><button id="" class="btn btn-secondary mx-1" onclick="batal()">Batal</button></div><small id="pass-salah" class="text-danger d-none mt-1"><i class="fas fa-exclamation-circle mr-1"></i> Password Salah</small>');
+    $('#ubah-password').append('<div id="verif-password" class="d-flex"><input type="password" class="form-control mr-1" id="password" placeholder="Masukkan password lama""><button  id="btn-submit" class="btn btn-success mx-1 btn-sm" onclick="verifikasi('+id_petugas+')">Submit</button><button id="" class="btn btn-secondary mx-1 btn-sm" onclick="batal()">Batal</button></div><small id="pass-salah" class="text-danger d-none mt-1"><i class="fas fa-exclamation-circle mr-1"></i> Password Salah</small>');
     $('#password').focus();
 }
 
@@ -55,5 +55,5 @@ function ubahPassword(id_petugas) {
 $('.btn-ubah').mouseup(function() {
     $('#nama').prop('readonly',false);
     $('#username').prop('readonly',false);
-    $('#ubah').html('<button type="submit" id="btn-ubahData" class="btn btn-secondary d-block btn-ubahData"><i class="fas fa-save mr-2"></i> Simpan</button>');
+    $('#ubah').html('<button type="submit" id="btn-ubahData" class="btn btn-secondary d-block btn-ubahData btn-sm"><i class="fas fa-save mr-2"></i> Simpan</button>');
 })

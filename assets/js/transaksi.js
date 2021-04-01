@@ -131,7 +131,7 @@ function toBulan(id) {
             tabelBulan.clear();
             for (let j = 0; j < bulan.length; j++) {
                 tabelBulan.row.add([
-                    '<button class="btn btn-danger cursor-pointer btn-bulan" onclick="toDetail('+dataSpp[i]['id_siswa_spp']+','+j+')" disabled>Pilih</button>',
+                    '<button class="btn btn-danger btn-sm cursor-pointer btn-bulan" onclick="toDetail('+dataSpp[i]['id_siswa_spp']+','+j+')" disabled>Pilih</button>',
                     bulan[j],
                     dataSpp[i]['tahun'],
                     toThousand(dataSpp[i]['nominal_angsuran'])

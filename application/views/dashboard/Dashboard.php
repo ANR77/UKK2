@@ -1,100 +1,74 @@
-<div class="main-content-container container-fluid px-4">
-    <!-- Page Header -->
-    <div class="page-header row no-gutters py-4">
-        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-        <span class="text-uppercase page-subtitle">Dashboard</span>
-        <h3 class="page-title text-capitalize"><?= $this->session->level ?></h3>
-        </div>
-    </div>
-    <!-- End Page Header -->
-    
-    <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
-    
-    <div class="row">
-        <div class="col-sm-6 col-lg-3 mb-4">
-            <div class="card card-small h-100">
-                <div class="card-body px-4 py-1 d-flex position-relative overflow-hidden">
-                    <div class="d-flex flex-column m-auto">
-                        <div class="text-center">
-                            <span class="text-uppercase label-dashboard">Transaksi Hari ini</span>
-                            <h6 class="my-3 value-dashboard"><?= count($dataTransaksi) ?></h6>
-                        </div>
-                        <i class="fas fa-tachometer-alt text-secondary bg-icon position-absolute"></i>
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-start mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+    <!-- Transaksi Hari Ini -->
+    <div class="col-xl-3 col-sm-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Transaksi Hari ini</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= count($dataTransaksi) ?></div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 mb-4">
-            <div class="card card-small h-100">
-                <div class="card-body p-4 d-flex position-relative overflow-hidden">
-                    <div class="d-flex flex-column m-auto">
-                        <div class="text-center">
-                            <span class="text-uppercase label-dashboard">Jumlah Siswa</span>
-                            <h6 class="my-3 value-dashboard"><?= $jumlahSiswa ?></h6>
-                        </div>
-                        <i class="fas fa-user-graduate text-secondary bg-icon position-absolute"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 mb-4">
-            <div class="card card-small h-100">
-                <div class="card-body p-4 d-flex position-relative overflow-hidden">
-                    <div class="d-flex flex-column m-auto">
-                        <div class="text-center">
-                            <span class="text-uppercase label-dashboard">Jumlah Kelas</span>
-                            <h6 class="my-3 value-dashboard"><?= $jumlahKelas ?></h6>
-                        </div>
-                        <i class="fas fa-school text-secondary bg-icon position-absolute"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 mb-4">
-            <div class="card card-small h-100">
-                <div class="card-body p-4 d-flex position-relative overflow-hidden">
-                    <div class="d-flex flex-column m-auto">
-                        <div class="text-center">
-                            <span class="text-uppercase label-dashboard">Jumlah Petugas</span>
-                            <h6 class="my-3 value-dashboard"><?= $jumlahPetugas ?></h6>
-                        </div>
-                        <i class="fas fa-user-tie text-secondary bg-icon position-absolute"></i>
+                    <div class="col-auto">
+                        <i class="fas fa-receipt fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">     
-            <div class="card">
-                <div class="card-header pb-0 text-center">
-                    <h4 class="mt-2 text-success">Transaksi hari ini</h4>
+    <!-- Jumlah Siswa -->
+    <div class="col-xl-3 col-sm-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Jumlah Siswa</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahSiswa ?></div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
+                    </div>
                 </div>
-                <div class="card-body pt-2">
-                    <table id="tabel-transaksi" class="table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama Siswa</th>
-                                <th>Jumlah Bayar</th>
-                                <th>Petugas</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php for ($i=0; $i < count($dataTransaksi); $i++) { ?>
-                                <tr>
-                                    <td><?= $i+1 ?></td>
-                                    <td><?= $dataTransaksi[$i]['nama'] ?></td>
-                                    <td class="nominal"><?= $dataTransaksi[$i]['jumlah_bayar'] ?></td>
-                                    <td><?= $dataTransaksi[$i]['nama_petugas'] ?></td>
-                                    <td>
-                                        <a class="btn btn-success px-2 py-1" onclick="showDetail(<?= $dataTransaksi[$i]['id_pembayaran'] ?>)"><i class="fas fa-info"></i></a>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+            </div>
+        </div>
+    </div>
+    <!-- Jumlah Kelas -->
+    <div class="col-xl-3 col-sm-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Jumlah Kelas</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahKelas ?></div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-school fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Jumlah Petugas -->
+    <div class="col-xl-3 col-sm-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Jumlah Petugas</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahPetugas ?></div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-user-tie fa-2x text-gray-300"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,10 +76,49 @@
 
 </div>
 
+<link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
+
+<div class="row">
+    <div class="col-12">     
+        <div class="card shadow">
+            <div class="card-header pb-0 text-center bg-white pt-2 border-0">
+                <h4 class="mt-2 text-success">Transaksi hari ini</h4>
+            </div>
+            <div class="card-body pt-2">
+                <table id="tabel-transaksi" class="table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Siswa</th>
+                            <th>Jumlah Bayar</th>
+                            <th>Petugas</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php for ($i=0; $i < count($dataTransaksi); $i++) { ?>
+                            <tr>
+                                <td><?= $i+1 ?></td>
+                                <td><?= $dataTransaksi[$i]['nama'] ?></td>
+                                <td class="nominal"><?= $dataTransaksi[$i]['jumlah_bayar'] ?></td>
+                                <td><?= $dataTransaksi[$i]['nama_petugas'] ?></td>
+                                <td>
+                                    <a class="btn btn-success px-2 py-1" onclick="showDetail(<?= $dataTransaksi[$i]['id_pembayaran'] ?>)"><i class="fas fa-info"></i></a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- Modal -->
 <div class="modal fade" id="modalDetail" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+        <div class="modal-content p-2">
             <div class="modal-header border-0">
                 <h5 class="modal-title">Tanggal Bayar : <span id="tgl-bayar"></span></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

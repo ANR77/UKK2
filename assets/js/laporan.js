@@ -2,8 +2,9 @@ let tabelLaporan = $('#tabel-laporan').DataTable({
     dom: 't',
     paging: false,
     language : {
-        "emptyTable": "Silahkan Pilih Kelas Terlebih Dahulu"
-    }
+        "emptyTable": "Silahkan Pilih Kelas Terlebih Dahulu",
+    },
+    ordering : false
 });
 
 function toThousand(num){
