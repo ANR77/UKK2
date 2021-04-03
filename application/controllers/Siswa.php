@@ -134,7 +134,7 @@ class Siswa extends CI_Controller {
                 redirect('siswa');
             }
         } else {
-            redirect('siswa/edit');
+            redirect('siswa/edit/'.$nisn);
         }
     }
 

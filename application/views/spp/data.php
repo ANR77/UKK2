@@ -32,6 +32,7 @@
                     <td>
                         <a class="badge badge-success p-1" href="<?= base_url('spp/edit/'.$dataSpp[$i]['id_spp']) ?>"><i class="fas fa-edit"></i> Edit</a>
                         <a class="badge badge-secondary p-1" href="<?= base_url('spp/laporan/'.$dataSpp[$i]['id_spp']) ?>"><i class="fas fa-file-alt"></i> Laporan</a>
+                        <a class="badge badge-danger p-1 text-white cursor-pointer" data-id="<?= $dataSpp[$i]['id_spp'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i> Hapus</a>
                     </td>
                 </tr>
             <?php } ?>
@@ -45,7 +46,7 @@
 <!-- Modal -->
 <div class="modal fade" id="modalDelete" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content p-2">
             <div class="modal-header border-0">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -53,6 +54,7 @@
             </div>
             <div class="modal-body text-center">
                 <h5>Apakah anda yakin untuk menghapus data?</h5>
+                <small>Data pembayaran, riwayat, dan SPP akan dihapus</small>
             </div>
             <div class="modal-footer row border-0">
                 <div class="col">
@@ -76,7 +78,7 @@
 
     $('#modalDelete').on('shown.bs.modal', function (event) {
         let id = $(event.relatedTarget).data('id');
-        let path = "<?= base_url("siswa/delete/") ?>"+id;
+        let path = "<?= base_url("spp/delete/") ?>"+id;
         $('#btn-modal-delete').attr('href', path);
     });
 

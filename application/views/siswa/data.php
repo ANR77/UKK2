@@ -28,7 +28,7 @@
                     <td><?= $dataSiswa[$i]['nisn'] ?></td>
                     <td><?= $dataSiswa[$i]['nis'] ?></td>
                     <td><?= $dataSiswa[$i]['nama'] ?></td>
-                    <td class="kelas"><?= $dataSiswa[$i]['kelas'] ?></td>
+                    <td class="kelas"><?= (isset($dataSiswa[$i]['kelas'])) ? $dataSiswa[$i]['kelas'] : 'Belum Terdaftar' ;  ?></td>
                     <td class="alamat"><?= $dataSiswa[$i]['alamat'] ?></td>
                     <td><?= $dataSiswa[$i]['no_telp'] ?></td>
                     <td>

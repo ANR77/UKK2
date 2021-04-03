@@ -13,7 +13,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="nisn">NISN</label>
-                            <input type="text" class="form-control <?= (form_error('nisn')) ? 'is-invalid' : '' ?>" id="" placeholder="" name="nisn" maxlength="10" required value="<?= $dataSiswa->nisn ?>" disabled>
+                            <input type="text" class="form-control <?= (form_error('nisn')) ? 'is-invalid' : '' ?>" id="" placeholder="" name="nisn" maxlength="10" required value="<?= $dataSiswa->nisn ?>" readonly>
                             <?php if (form_error('nisn')) : ?>
                                 <div class="invalid-feedback">
                                     <?= form_error('nisn') ?>
@@ -41,6 +41,7 @@
                         <div class="form-group">
                             <label for="kelas">Kelas</label>
                             <select class="custom-select <?= (form_error('kelas')) ? 'is-invalid' : '' ?>" name="kelas" required>
+                                <option value="">- Silahkan Pilih -</option>
                                 <?php for ($i=0; $i < count($dataKelas); $i++) { ?>
                                     <option value="<?= $dataKelas[$i]['id_kelas'] ?>" <?= ($dataKelas[$i]['id_kelas'] == $dataSiswa->id_kelas) ? 'selected' : '' ; ?>><?=$dataKelas[$i]['kelas'] ?></option>
                                 <?php } ?>

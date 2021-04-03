@@ -110,4 +110,22 @@ class M_Spp extends CI_Model
         INNER JOIN kejuruan ON kelas.id_kejuruan=kejuruan.id_kejuruan
         WHERE spp.id_spp = '.$id_spp)->result_array();
     }
+
+    function delSppPembayaran($id_spp){
+        $this->db->where('id_spp',$id_spp);
+        if ($this->db->delete('pembayaran')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function delSiswaSpp($id_spp){
+        $this->db->where('id_spp',$id_spp);
+        if ($this->db->delete('siswa_spp')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

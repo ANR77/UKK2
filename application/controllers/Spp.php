@@ -74,16 +74,22 @@ class Spp extends CI_Controller {
         }
         // INSERTING DATA
         if (count($duplicate) == 0) {// here
-            if ($this->db->insert_batch('spp',$dataSpp)) {
+            if ($this->db->insert_batch('spp',$dataSpp)) { // INSERT KE spp
                 $dataSiswaSpp = $this->generateQuerySppSiswa($post['tingkat'],$kode_entri,$this->parsingAngsuran($post['jumlah_angsuran']));
-                if ($this->db->insert_batch('siswa_spp', $dataSiswaSpp, $batch_size=100)) {
+                if ($dataSiswaSpp) {
+                    if ($this->db->insert_batch('siswa_spp', $dataSiswaSpp, $batch_size=100)) { // insert ke siswa_spp
+                        $this->session->set_flashdata('status','success');
+                        $this->session->set_flashdata('pesan','Input data berhasil!');
+                        redirect('spp');
+                    } else {
+                        $this->db->delete('spp',array('kode_entri' => $kode_entri+1));
+                        $this->session->set_flashdata('status','fail');
+                        $this->session->set_flashdata('pesan','Input data gagal!');
+                        redirect('spp');
+                    }
+                } else {
                     $this->session->set_flashdata('status','success');
                     $this->session->set_flashdata('pesan','Input data berhasil!');
-                    redirect('spp');
-                } else {
-                    $this->db->delete('spp',array('kode_entri' => $kode_entri+1));
-                    $this->session->set_flashdata('status','fail');
-                    $this->session->set_flashdata('pesan','Input data gagal!');
                     redirect('spp');
                 }
             } else {
@@ -125,15 +131,19 @@ class Spp extends CI_Controller {
         for ($i=0; $i < count($tingkat); $i++) { 
             $id_spp = $this->M_Spp->getIdSppByEntri($tingkat[$i],$kode_entri);
             $kelas = $this->M_Spp->getKelasByTingkat($tingkat[$i]);
-            for ($j=0; $j < count($kelas); $j++) { 
-                $siswa = $this->M_Spp->getIdSiswa($kelas[$j]['id_kelas']);
-                for ($k=0; $k < count($siswa); $k++) { 
-                    $data [] = array(
-                        'id_siswa' => $siswa[$k]['id_siswa'],
-                        'id_spp' => intval($id_spp['id_spp']),
-                        'jumlah_angsuran' => $jumlah_angsuran,
-                        'angsuran' => 0
-                    );
+            if ($kelas) {
+                for ($j=0; $j < count($kelas); $j++) { 
+                    $siswa = $this->M_Spp->getIdSiswa($kelas[$j]['id_kelas']);
+                    if ($siswa) {
+                        for ($k=0; $k < count($siswa); $k++) { 
+                            $data [] = array(
+                                'id_siswa' => $siswa[$k]['id_siswa'],
+                                'id_spp' => intval($id_spp['id_spp']),
+                                'jumlah_angsuran' => $jumlah_angsuran,
+                                'angsuran' => 0
+                            );
+                        }
+                    }
                 }
             }
         }
@@ -224,6 +234,33 @@ class Spp extends CI_Controller {
         $id_kelas =  $this->uri->segment(4);
         $this->load->model('M_Spp');
 		echo json_encode($this->M_Spp->getDataLaporan($id_spp,$id_kelas));
+    }
+
+    // Delete Spp
+    public function delete($id_spp){
+        $this->load->model('M_Spp');
+        if ($this->M_Spp->delSppPembayaran($id_spp)) {
+            if ($this->M_Spp->delSiswaSpp($id_spp)) {
+                $this->db->where('id_spp', $id_spp);
+                if ($this->db->delete('spp')) {
+                    $this->session->set_flashdata('status','success');
+                    $this->session->set_flashdata('pesan','Data berhasil dihapus!');
+                    redirect('spp');
+                } else {
+                    $this->session->set_flashdata('status','fail');
+                    $this->session->set_flashdata('pesan','Data gagal dihapus!');
+                    redirect('spp');
+                }
+            } else {
+                $this->session->set_flashdata('status','fail');
+                $this->session->set_flashdata('pesan','Data gagal dihapus!');
+                redirect('spp');
+            }
+        } else {
+            $this->session->set_flashdata('status','fail');
+            $this->session->set_flashdata('pesan','Data gagal dihapus!');
+            redirect('spp');
+        }
     }
 
 	public function index(){
