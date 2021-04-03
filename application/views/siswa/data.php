@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
 <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
 <div class="card p-3 shadow-none">
-    <table id="tabel-kelas" class="table-hover table-striped table-responsive">
+    <table id="tabel-kelas" class="table-hover table-striped table-responsive-md">
         <thead>
             <tr>
                 <th>No</th>
@@ -33,7 +33,7 @@
                     <td><?= $dataSiswa[$i]['no_telp'] ?></td>
                     <td>
                         <a class="badge badge-success p-1" href="<?= base_url('Siswa/edit/'.$dataSiswa[$i]['nisn']) ?>"><i class="fas fa-edit"></i></a>
-                        <a class="badge badge-danger text-white p-1 cursor-pointer" data-id="<?= $dataSiswa[$i]['nisn'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i></a>
+                        <a class="badge badge-danger text-white p-1 cursor-pointer" data-id="<?= $dataSiswa[$i]['id_siswa'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
             <?php } ?>

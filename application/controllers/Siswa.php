@@ -63,7 +63,29 @@ class Siswa extends CI_Controller {
 				'no_telp' => $post['no_telp'],
 				'password' => md5($post['nis']),
 			);
+            $this->load->model('M_Siswa');
             if ($this->db->insert('siswa',$dataInput)) {
+                $spp = $this->M_Siswa->getSppSiswa($post['kelas'], date('Y'));
+                $siswa = $this->M_Siswa->getById($post['nisn']);
+                if ($spp) {
+                    $dataSppSiswa = array(
+                        'id_siswa' => $siswa->id_siswa,
+                        'id_spp' => $spp['id_spp'],
+                        'jumlah_angsuran' => $spp['jumlah_angsuran'],
+                        'angsuran' => 0,
+                    );
+                    if ($this->db->insert('siswa_spp',$dataSppSiswa)) {
+                        $this->session->set_flashdata('status','success');
+                        $this->session->set_flashdata('pesan','Input data berhasil!');
+                        redirect('siswa');
+                    } else {
+                        $this->db->where('id_siswa', $siswa['id_siswa']);
+                        $this->db->delete('siswa');
+                        $this->session->set_flashdata('status','fail');
+                        $this->session->set_flashdata('pesan','Input data gagal!');
+                        redirect('siswa');
+                    }
+                }
                 $this->session->set_flashdata('status','success');
                 $this->session->set_flashdata('pesan','Input data berhasil!');
                 redirect('siswa');
@@ -117,12 +139,25 @@ class Siswa extends CI_Controller {
     }
 
     // DELETE DATA
-    public function delete($nisn){
-        $this->db->where('nisn', $nisn);
-        if ($this->db->delete('siswa')) {
-            $this->session->set_flashdata('status','success');
-            $this->session->set_flashdata('pesan','Data berhasil dihapus!');
-            redirect('siswa');
+    public function delete($id_siswa){
+        $this->load->model('M_Siswa');
+        if ($this->M_Siswa->delSiswaPembayaran($id_siswa)) {
+            if ($this->M_Siswa->delSiswaSpp($id_siswa)) {
+                $this->db->where('id_siswa', $id_siswa);
+                if ($this->db->delete('siswa')) {
+                    $this->session->set_flashdata('status','success');
+                    $this->session->set_flashdata('pesan','Data berhasil dihapus!');
+                    redirect('siswa');
+                } else {
+                    $this->session->set_flashdata('status','fail');
+                    $this->session->set_flashdata('pesan','Data gagal dihapus!');
+                    redirect('siswa');
+                }
+            } else {
+                $this->session->set_flashdata('status','fail');
+                $this->session->set_flashdata('pesan','Data gagal dihapus!');
+                redirect('siswa');
+            }
         } else {
             $this->session->set_flashdata('status','fail');
             $this->session->set_flashdata('pesan','Data gagal dihapus!');

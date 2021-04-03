@@ -13,7 +13,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="nisn">NISN</label>
-                            <input type="text" class="form-control <?= (form_error('nisn')) ? 'is-invalid' : '' ?>" id="" placeholder="" name="nisn" maxlength="10" required value="<?= $dataSiswa->nisn ?>">
+                            <input type="text" class="form-control <?= (form_error('nisn')) ? 'is-invalid' : '' ?>" id="" placeholder="" name="nisn" maxlength="10" required value="<?= $dataSiswa->nisn ?>" disabled>
                             <?php if (form_error('nisn')) : ?>
                                 <div class="invalid-feedback">
                                     <?= form_error('nisn') ?>

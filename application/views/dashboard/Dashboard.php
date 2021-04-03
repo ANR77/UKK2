@@ -103,7 +103,7 @@
                                 <td class="nominal"><?= $dataTransaksi[$i]['jumlah_bayar'] ?></td>
                                 <td><?= $dataTransaksi[$i]['nama_petugas'] ?></td>
                                 <td>
-                                    <a class="btn btn-success px-2 py-1" onclick="showDetail(<?= $dataTransaksi[$i]['id_pembayaran'] ?>)"><i class="fas fa-info"></i></a>
+                                    <a class="badge badge-success text-white cursor-pointer px-2 py-1" onclick="showDetail(<?= $dataTransaksi[$i]['id_pembayaran'] ?>)"><i class="fas fa-info"></i></a>
                                 </td>
                             </tr>
                         <?php } ?>

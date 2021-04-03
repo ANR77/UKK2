@@ -108,16 +108,21 @@ function setSpp(id) {
         dataType: 'json',
         success: function (data) {
             dataSpp = data;
-            tabelSpp.clear();
-            $('#modal-search').modal('hide');
-            for (let i = 0; i < data.length; i++) {
-                tabelSpp.row.add([
-                    '<span class="badge badge-success cursor-pointer" onclick="toBulan('+data[i]['id_siswa_spp']+')"><i class="fas fa-plus"></i></span>',
-                    data[i]['tahun'],
-                    data[i]['tingkat'],
-                    data[i]['keterangan']
-                ]
-                ).draw();
+            if (data.length != 0) {
+                tabelSpp.clear();
+                $('#modal-search').modal('hide');
+                for (let i = 0; i < data.length; i++) {
+                    tabelSpp.row.add([
+                        '<span class="badge badge-success cursor-pointer" onclick="toBulan('+data[i]['id_siswa_spp']+')"><i class="fas fa-plus"></i></span>',
+                        data[i]['tahun'],
+                        data[i]['tingkat'],
+                        data[i]['keterangan']
+                    ]
+                    ).draw();
+                }
+            } else {
+                clearAll();
+                toastr.warning("Siswa belum terdaftar pada SPP mana pun!");
             }
         }
     });
@@ -188,7 +193,6 @@ $("#bayar").keyup(function() {
 
 // RESET ALL
 function clearAll() {
-    tabelBulan.clear();
     $('#bulan').val('');
     $('#tahun').val('');
     $('#tingkat').val('');
@@ -198,6 +202,7 @@ function clearAll() {
     $('#kembalian').val('-');
     $('#btn-bayar').prop('disabled', true);
     tabelBulan.clear().draw();
+    tabelSpp.clear().draw();
 }
 
 // GET TODAY DATE

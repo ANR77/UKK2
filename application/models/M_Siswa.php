@@ -22,4 +22,27 @@ class M_Siswa extends CI_Model
         $this->db->where('nisn',$nisn);
         return $this->db->get()->row();
     }
+
+    function delSiswaPembayaran($id_siswa){
+        $this->db->where('id_siswa',$id_siswa);
+        if ($this->db->delete('pembayaran')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function delSiswaSpp($id_siswa){
+        $this->db->where('id_siswa',$id_siswa);
+        if ($this->db->delete('siswa_spp')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function getSppSiswa($id_kelas, $tahun){
+        $tingkat = $this->db->select('tingkat_kelas')->where('id_kelas',$id_kelas)->from('kelas')->get()->row_array();
+        return $this->db->select('*')->where('tingkat',$tingkat['tingkat_kelas'])->where('tahun',$tahun)->from('spp')->get()->row_array();
+    }
 }
