@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
 
 <!-- CONTENT GOES HERE -->
-<div class="card p-3 shadow-none">
+<div class="card p-3 shadow-none mb-5">
     <table id="tabel-laporan" class="table-hover table-bordered table-sm table-responsive-md">
         <thead>
             <tr>

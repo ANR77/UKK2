@@ -6,12 +6,12 @@
 <!-- Content Row -->
 <div class="row">
     <!-- Transaksi Hari Ini -->
-    <div class="col-xl-3 col-sm-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
+    <div class="col-xl-3 col-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Transaksi Hari ini</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><?= count($dataTransaksi) ?></div>
                     </div>
@@ -23,8 +23,8 @@
         </div>
     </div>
     <!-- Jumlah Siswa -->
-    <div class="col-xl-3 col-sm-6 mb-4">
-        <div class="card border-left-success shadow h-100 py-2">
+    <div class="col-xl-3 col-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
@@ -40,12 +40,12 @@
         </div>
     </div>
     <!-- Jumlah Kelas -->
-    <div class="col-xl-3 col-sm-6 mb-4">
+    <div class="col-xl-3 col-6 mb-4">
         <div class="card border-left-info shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                             Jumlah Kelas</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahKelas ?></div>
                     </div>
@@ -57,12 +57,12 @@
         </div>
     </div>
     <!-- Jumlah Petugas -->
-    <div class="col-xl-3 col-sm-6 mb-4">
+    <div class="col-xl-3 col-6 mb-4">
         <div class="card border-left-warning shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                             Jumlah Petugas</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahPetugas ?></div>
                     </div>
@@ -78,14 +78,15 @@
 
 <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
 
-<div class="row">
+<div class="row mb-5">
     <div class="col-12">     
         <div class="card shadow">
-            <div class="card-header pb-0 text-center bg-white pt-2 border-0">
-                <h4 class="mt-2 text-success">Transaksi hari ini</h4>
+            <div class="card-header pb-0 bg-white px-4 pt-2 border-0 d-flex flex-row justify-content-between">
+                <h4 class="mt-2">Transaksi hari ini</h4>
+                <a href="<?= base_url('riwayat') ?>" class="cursor-pointer mt-1 text-secondary"><i class="fas fa-external-link-alt fa-sm"></i></a>
             </div>
-            <div class="card-body pt-2">
-                <table id="tabel-transaksi" class="table-hover table-striped">
+            <div class="card-body px-4 pb-4 pt-0">
+                <table id="tabel-transaksi" class="table-hover table-striped table-responsive-md">
                     <thead>
                         <tr>
                             <th>No</th>

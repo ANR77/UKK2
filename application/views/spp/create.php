@@ -1,6 +1,6 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-start mb-5">
-    <a href="<?= base_url('spp') ?>" class="btn-back"><i class="fas fa-arrow-circle-left mr-2"></i></a>
+    <a href="<?= base_url('spp') ?>" class="btn-back"><i class="fas fa-arrow-circle-left text-success mr-2"></i></a>
     <h1 class="h3 mb-0 text-gray-800">Tambah Data SPP</h1>
 </div>
 
@@ -10,7 +10,7 @@
 <!-- CONTENT GOES HERE -->
 <div class="row">
     <div class="col-12 col-lg-10 offset-lg-1">
-        <div class="card">
+        <div class="card shadow">
             <?php echo form_open('spp/createData'); ?>
                 <div class="card-body row">
                     <div class="col-6">
@@ -79,8 +79,10 @@
                     <select id="select-tingkat" name="tingkat[]" multiple="multiple" hidden>
                         <?php for ($i=0; $i < count($dataTingkat); $i++) { ?>
                             <option value="<?= $dataTingkat[$i]['tingkat_kelas'] ?>"><?= $dataTingkat[$i]['tingkat_kelas'] ?></option>
-                        <?php } ?></select>                        
-                    <button type="submit" class="btn btn-success btn-block mt-5">Simpan</button>
+                        <?php } ?></select>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-success btn-block mt-5">Simpan</button>
+                    </div>      
                 </div>
             </form>
         </div>

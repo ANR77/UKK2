@@ -58,7 +58,7 @@ class Login extends CI_Controller {
 				redirect('transaksi');
 			} 
 			else {
-				$this->session->set_userdata('error_login', TRUE);
+				$this->session->set_userdata('error_login_p', TRUE);
 				redirect('/');
 			}
 		} else {

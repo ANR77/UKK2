@@ -1,15 +1,15 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-start mb-5">
-    <a href="<?= base_url('siswa') ?>" class="btn-back"><i class="fas fa-arrow-circle-left mr-2"></i></a>
+    <a href="<?= base_url('siswa') ?>" class="btn-back"><i class="fas text-success fa-arrow-circle-left mr-2"></i></a>
     <h1 class="h3 mb-0 text-gray-800">Edit Data Siswa</h1>
 </div>
 
 <!-- CONTENT GOES HERE -->
 <div class="row">
     <div class="col-12 col-lg-10 offset-lg-1">
-        <div class="card">
+        <div class="card shadow">
             <form action="<?= base_url('siswa/editData/'.$dataSiswa->nisn) ?>" method="post">
-                <div class="card-body row">
+                <div class="card-body row p-4">
                     <div class="col-6">
                         <div class="form-group">
                             <label for="nisn">NISN</label>
@@ -56,7 +56,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="alamat">Alamat</label>
-                            <textarea class="form-control" id="alamat" rows="9" name="alamat"><?= $dataSiswa->alamat ?></textarea>
+                            <textarea class="form-control" id="alamat" rows="8" name="alamat"><?= $dataSiswa->alamat ?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="no_telp">No. Telepon</label>
@@ -68,7 +68,9 @@
                             <?php endif; ?>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success btn-block mt-5">Simpan</button>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-success btn-block mt-5">Simpan</button>
+                    </div>
                 </div>
             </form>
         </div>

@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
 
 <!-- CONTENT GOES HERE -->
-<div class="card shadow">
+<div class="card shadow mb-5">
     <div class="card-body">
         <table id="tabel-riwayat" class="table-hover table-striped table-responsive-md">
             <thead>

@@ -1,13 +1,13 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Data Siswa</h1>
-    <a href="<?= base_url('siswa/create') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm"></i> Tambah Data</a>
+    <a href="<?= base_url('siswa/create') ?>" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-plus fa-sm"></i> Tambah Data</a>
 </div>
 
 <!-- CONTENT GOES HERE -->
 <link rel="stylesheet" href="<?= base_url('assets/dataTables/datatables.min.css') ?>">
 <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
-<div class="card p-3 shadow-none">
+<div class="card p-3 shadow-none mb-5">
     <table id="tabel-kelas" class="table-hover table-striped table-responsive-md">
         <thead>
             <tr>

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="<?= base_url('assets/toastr/build/toastr.min.css') ?>">
 
 <!-- CONTENT GOES HERE -->
-<div class="row h-100">
+<div class="row h-100 mb-5">
     <!-- TABLE SELECT SPP -->
     <div class="col-sm-12 col-md-7" id="kiri">
         <div class="row">

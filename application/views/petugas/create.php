@@ -1,13 +1,13 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-start mb-5">
-    <a href="<?= base_url('petugas') ?>" class="btn-back"><i class="fas fa-arrow-circle-left mr-2"></i></a>
+    <a href="<?= base_url('petugas') ?>" class="btn-back"><i class="fas fa-arrow-circle-left text-success mr-2"></i></a>
     <h1 class="h3 mb-0 text-gray-800">Tambah Data Petugas</h1>
 </div>
 
 <!-- CONTENT GOES HERE -->
 <div class="row">
     <div class="col-10 offset-sm-1 col-lg-8 offset-lg-2">
-        <div class="card">
+        <div class="card shadow">
             <?php echo form_open('petugas/createData'); ?>
                 <div class="card-body row">
                     <div class="form-group col-12 col-lg-6">
@@ -50,7 +50,9 @@
                             </div>
                         <?php endif; ?>
                     </div>
-                    <button type="submit" class="btn btn-success btn-block mt-5">Simpan</button>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-success btn-block mt-5">Simpan</button>
+                    </div>
                 </div>
             </form>
         </div>

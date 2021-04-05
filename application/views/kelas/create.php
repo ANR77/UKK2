@@ -1,6 +1,6 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-start mb-5">
-    <a href="<?= base_url('kelas') ?>" class="btn-back"><i class="fas fa-arrow-circle-left mr-2"></i></a>
+    <a href="<?= base_url('kelas') ?>" class="btn-back"><i class="fas fa-arrow-circle-left text-success mr-2"></i></a>
     <h1 class="h3 mb-0 text-gray-800">Tambah Data Kelas</h1>
 </div>
 

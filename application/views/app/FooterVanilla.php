@@ -1,5 +1,5 @@
                 <footer class="d-flex p-2 px-3 bg-white border-top w-100 justify-content-center">
-                    <span class="align-self-center">Copyright © 2021 Aplikasi SPP</span>
+                    <span class="align-self-center">Copyright © ANR 2021</span>
                 </footer>
             </div> <!-- END THE BIG ROW - Header.php -->
         </div><!-- END THE BIG CONTAINER - Header.php -->
