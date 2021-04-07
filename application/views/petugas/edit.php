@@ -20,11 +20,11 @@
                         <?php endif; ?>
                     </div>
                     <div class="form-group col-12 col-lg-6">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control <?= (form_error('password')) ? 'is-invalid' : '' ?>" id="" placeholder="" name="password" maxlength="32" value="<?= $dataPetugas->password ?>" disabled required>
-                        <?php if (form_error('password')) : ?>
+                        <label for="level">Level</label>
+                        <input class="form-control <?= (form_error('level')) ? 'is-invalid' : '' ?>" name="level" value="<?= $dataPetugas->level ?>" readonly required>
+                        <?php if (form_error('level')) : ?>
                             <div class="invalid-feedback">
-                                <?= form_error('password') ?>
+                                <?= form_error('level') ?>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -37,18 +37,11 @@
                             </div>
                         <?php endif; ?>
                     </div>
-                    <div class="form-group col-12 col-lg-6">
-                        <label for="level">Level</label>
-                        <select class="custom-select <?= (form_error('level')) ? 'is-invalid' : '' ?>" name="level" required>
-                            <option value="admin" <?= ($dataPetugas->level == 'admin') ? 'selected' : '' ;?>>Admin</option>
-                            <option value="petugas"  <?= ($dataPetugas->level == 'petugas') ? 'selected' : '' ;?>>Petugas</option>
-                        </select>
-                        <?php if (form_error('level')) : ?>
-                            <div class="invalid-feedback">
-                                <?= form_error('level') ?>
-                            </div>
-                        <?php endif; ?>
+                    <div id="ubah-password"  class="form-group col-12 col-lg-6">
+                        <label for="password">Password</label>
+                        <button type="button" id="btn-ubahPass" class="btn btn-success d-block btn-sm" onclick="btnUbahPassword()">Ubah Password</button>
                     </div>
+                    <input type="hidden" name="password-lama" value="<?= $dataPetugas->password ?>">
                     <div class="col-12">
                         <button type="submit" class="btn btn-success btn-block mt-5">Simpan</button>
                     </div>
@@ -57,3 +50,5 @@
         </div>
     </div>
 </div>
+
+<script src="<?= base_url('assets/js/petugas.js') ?>"></script>

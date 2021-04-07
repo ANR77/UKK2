@@ -28,7 +28,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="tahun">Tahun</label>
-                                    <input id="tahun" class="custom-select" name="tahun" disabled value="<?= $dataSpp['tahun'] ?>"></input>
+                                    <input id="tahun" class="form-control" name="tahun" disabled value="<?= $dataSpp['tahun'] ?>">
                                 </div>
                             </div>
                             <!-- SELECT TINGKAT -->

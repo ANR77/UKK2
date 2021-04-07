@@ -20,11 +20,11 @@
                         <?php endif; ?>
                     </div>
                     <div class="form-group col-12 col-lg-6">
-                        <label for="password">Password</label>
-                        <input type="text" class="form-control <?= (form_error('password')) ? 'is-invalid' : '' ?>" id="" placeholder="" name="password" maxlength="32" required>
-                        <?php if (form_error('password')) : ?>
+                        <label for="level">Level</label>
+                        <input class="form-control <?= (form_error('level')) ? 'is-invalid' : '' ?>" name="level" value="petugas" readonly required>
+                        <?php if (form_error('level')) : ?>
                             <div class="invalid-feedback">
-                                <?= form_error('password') ?>
+                                <?= form_error('level') ?>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -38,15 +38,11 @@
                         <?php endif; ?>
                     </div>
                     <div class="form-group col-12 col-lg-6">
-                        <label for="level">Level</label>
-                        <select class="custom-select <?= (form_error('level')) ? 'is-invalid' : '' ?>" name="level" required>
-                            <option value="">- Silahkan Pilih -</option>
-                            <option value="admin">Admin</option>
-                            <option value="petugas">Petugas</option>
-                        </select>
-                        <?php if (form_error('level')) : ?>
+                        <label for="password">Password</label>
+                        <input type="text" class="form-control <?= (form_error('password')) ? 'is-invalid' : '' ?>" id="" placeholder="" name="password" maxlength="32" required>
+                        <?php if (form_error('password')) : ?>
                             <div class="invalid-feedback">
-                                <?= form_error('level') ?>
+                                <?= form_error('password') ?>
                             </div>
                         <?php endif; ?>
                     </div>

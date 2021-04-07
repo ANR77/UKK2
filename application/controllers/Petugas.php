@@ -68,6 +68,7 @@ class Petugas extends CI_Controller {
 				'username' => $post['username'],
 				'nama_petugas' => $post['nama_petugas'],
 				'level' => $post['level'],
+				'password' => (isset($post['password'])) ? md5($post['password']) : md5($post['password-lama']),
 			);
             $this->db->where('id_petugas',$id);
             if ($this->db->update('petugas',$dataInput)) {

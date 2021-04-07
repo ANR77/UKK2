@@ -3,9 +3,12 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('/') ?>">
         <div class="sidebar-brand-icon">
-            <i class="fas fa-file-invoice"></i>
+            <span class="h-100">
+                <img src="<?= base_url('assets/img/tab-icon.png') ?>" alt="" srcset="" style="max-height: 50px;">
+            </span>
+            <!-- <i class="fas fa-file-invoice"></i> -->
         </div>
-        <div class="sidebar-brand-text mx-3">ASpp</div>
+        <div class="sidebar-brand-text ml-1 mr-3">ASpp</div>
     </a>
 
     <!-- Divider -->

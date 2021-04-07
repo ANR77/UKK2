@@ -53,7 +53,9 @@ class Spp extends CI_Controller {
         $this->load->model('M_Spp');
         $data = array(
             'title' => 'Data SPP',
-            'dataTingkat' => $this->M_Spp->getTingkat()
+            'dataTingkat' => $this->M_Spp->getTingkat(),
+            'tgl' => date('Y'),
+            'tgl_full' => date('Y-m-d')
         );
         template('spp/create',$data);
     }

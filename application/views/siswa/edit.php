@@ -13,7 +13,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="nisn">NISN</label>
-                            <input type="text" class="form-control <?= (form_error('nisn')) ? 'is-invalid' : '' ?>" id="" placeholder="" name="nisn" maxlength="10" required value="<?= $dataSiswa->nisn ?>" readonly>
+                            <input type="number" class="form-control <?= (form_error('nisn')) ? 'is-invalid' : '' ?>" id="" placeholder="" name="nisn" maxlength="10" required value="<?= $dataSiswa->nisn ?>" readonly oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             <?php if (form_error('nisn')) : ?>
                                 <div class="invalid-feedback">
                                     <?= form_error('nisn') ?>
@@ -22,7 +22,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nis">NIS</label>
-                            <input type="text" class="form-control <?= (form_error('nis')) ? 'is-invalid' : '' ?>" id="" placeholder="" name="nis" maxlength="8" required required value="<?= $dataSiswa->nis ?>">
+                            <input type="number" class="form-control <?= (form_error('nis')) ? 'is-invalid' : '' ?>" id="" placeholder="" name="nis" maxlength="8" required value="<?= $dataSiswa->nis ?>" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             <?php if (form_error('nis')) : ?>
                                 <div class="invalid-feedback">
                                     <?= form_error('nis') ?>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="form-group">
                             <label for="no_telp">No. Telepon</label>
-                            <input type="text" class="form-control <?= (form_error('no_telp')) ? 'is-invalid' : '' ?>" id="" placeholder="" name="no_telp" maxlength="13" value="<?= $dataSiswa->no_telp ?>">
+                            <input type="number" class="form-control <?= (form_error('no_telp')) ? 'is-invalid' : '' ?>" id="" placeholder="" name="no_telp" maxlength="13" value="<?= $dataSiswa->no_telp ?>"oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                             <?php if (form_error('no_telp')) : ?>
                                 <div class="invalid-feedback">
                                     <?= form_error('no_telp') ?>

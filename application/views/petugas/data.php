@@ -26,8 +26,10 @@
                     <td><?= $dataPetugas[$i]['nama_petugas'] ?></td>
                     <td><?= $dataPetugas[$i]['level'] ?></td>
                     <td>
-                        <a class="badge badge-success p-1" href="<?= base_url('petugas/edit/'.$dataPetugas[$i]['id_petugas']) ?>"><i class="fas fa-edit"></i> Edit</a>
-                        <a class="badge badge-danger text-white cursor-pointer p-1" data-id="<?= $dataPetugas[$i]['id_petugas'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i> Delete</a>
+                        <?php if ($dataPetugas[$i]['level']=='petugas') { ?>
+                            <a class="badge badge-success p-1" href="<?= base_url('petugas/edit/'.$dataPetugas[$i]['id_petugas']) ?>" disabled><i class="fas fa-edit"></i> Edit</a>
+                            <a class="badge badge-danger text-white cursor-pointer p-1" data-id="<?= $dataPetugas[$i]['id_petugas'] ?>" data-toggle="modal" data-target="#modalDelete"><i class="fas fa-trash-alt"></i> Delete</a>
+                        <?php } else { echo 'Tidak Tersedia'; } ?>
                     </td>
                 </tr>
             <?php } ?>

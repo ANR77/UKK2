@@ -31,7 +31,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="tahun">Tahun</label>
-                                    <select id="tahun" class="custom-select" name="tahun"></select>
+                                    <input id="tahun" class="form-control" name="tahun" value="<?= $tgl ?>" readonly>
                                 </div>
                             </div>
                             <!-- SELECT TINGKAT -->
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                     </div>
-                    <input type="text" name="data_created" id="data_created" hidden>
+                    <input type="text" name="data_created" id="data_created" value="<?= $tgl_full ?>" hidden>
                     <select id="select-tingkat" name="tingkat[]" multiple="multiple" hidden>
                         <?php for ($i=0; $i < count($dataTingkat); $i++) { ?>
                             <option value="<?= $dataTingkat[$i]['tingkat_kelas'] ?>"><?= $dataTingkat[$i]['tingkat_kelas'] ?></option>
@@ -129,24 +129,5 @@
         var num_parts = num.toString().split(".");
         num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return num_parts.join(".");
-    }
-
-    function setDate(){
-        let d = new Date(),
-            month = '' + (d.getMonth() + 1),
-            day = '' + d.getDate(),
-            year = d.getFullYear();
-
-        if (month.length < 2) 
-            month = '0' + month;
-        if (day.length < 2) 
-            day = '0' + day;
-
-        for (let i = 0; i < 3; i++) {
-            let tahun = year+i
-            $('#tahun').append('<option value="'+ tahun +'">'+ tahun +'</option>')
-        }
-        d = [year, month, day].join('-');
-        $('#data_created').val(d);
     }
 </script>
